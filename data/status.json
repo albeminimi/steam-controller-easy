@@ -1,21 +1,21 @@
 {
- "generated_at": "2026-10-22T14:40:52+00:00",
+ "generated_at": "2026-10-22T14:55:19+00:00",
  "sources": {
   "official": {
    "ok": true,
-   "updated_at": "2026-10-22T14:40:52+00:00"
+   "updated_at": "2026-10-22T14:55:19+00:00"
   },
   "store": {
    "ok": true,
-   "updated_at": "2026-10-22T14:40:52+00:00"
+   "updated_at": "2026-10-22T14:55:19+00:00"
   },
   "forum": {
    "ok": true,
-   "updated_at": "2026-10-22T14:40:52+00:00"
+   "updated_at": "2026-10-22T14:55:19+00:00"
   },
   "reddit": {
    "ok": true,
-   "updated_at": "2026-10-22T14:40:52+00:00"
+   "updated_at": "2026-10-22T14:55:19+00:00"
   }
  },
  "official": [
@@ -304,6 +304,20 @@
     "first_seen": "2026-10-22T07:16:36+00:00"
    },
    {
+    "id": "571540300205448946-570423993959631393",
+    "date": "2026-09-22T15:10:24+00:00",
+    "status": "got",
+    "text": "it would be nice, but i had no issues seeing the email for my frame/controller purchases. you don't have banks, mortgages, investments, sensitive accounts, etc? and even if not, you don't pay attention to emails from ste…",
+    "reserved": null,
+    "reserved_approx": false,
+    "reserved_phrase": null,
+    "estimate": null,
+    "eu": [],
+    "thread": "Hardware wishlist or reservation notifications",
+    "url": "https://steamcommunity.com/app/4165870/discussions/0/571540300205448946/#c570423993959631393",
+    "first_seen": "2026-10-22T14:56:55+00:00"
+   },
+   {
     "id": "571548834124044893-617710833111304646",
     "date": "2026-09-11T19:54:02+00:00",
     "status": "got",
@@ -372,6 +386,20 @@
     "thread": "Steam Controller purchase invitation failed and I can’t contact Support",
     "url": "https://steamcommunity.com/app/4165870/discussions/0/586184898467897752/#c586184898467901407",
     "first_seen": "2026-10-22T07:11:27+00:00"
+   },
+   {
+    "id": "586184898467897752-op",
+    "date": "2026-09-02T08:09:56+00:00",
+    "status": "got",
+    "text": "I received my Steam Controller purchase invitation on August 31 and tried to complete the purchase right away. The payment failed and Steam did not take any money. Steam still shows the failed $106.30 Steam Controller tr…",
+    "reserved": null,
+    "reserved_approx": false,
+    "reserved_phrase": null,
+    "estimate": "2027",
+    "eu": [],
+    "thread": "Steam Controller purchase invitation failed and I can’t contact Support",
+    "url": "https://steamcommunity.com/app/4165870/discussions/0/586184898467897752/",
+    "first_seen": "2026-10-22T14:56:55+00:00"
    },
    {
     "id": "586184264603689984-op",
@@ -665,6 +693,36 @@
     "first_seen": "2026-10-22T14:28:32+00:00"
    },
    {
+    "id": "reddit-t1_pey4lr2",
+    "source": "reddit",
+    "date": "2026-10-09T23:16:49+00:00",
+    "status": "got",
+    "text": "…on their ETAs, i got the estimation of 2027 for the steam controller and got the purchase email a month ago. Also reservation only means you have a unit secured, not when. waitlist means you may no get any unit...ever",
+    "reserved": null,
+    "reserved_approx": false,
+    "reserved_phrase": null,
+    "estimate": "2027",
+    "eu": [],
+    "thread": "r/SteamFrame",
+    "url": "https://www.reddit.com/r/SteamFrame/comments/1x1u17r/just_wow_incredibly_frustrating_day_1_res_list/pey4lr2/",
+    "first_seen": "2026-10-22T14:58:23+00:00"
+   },
+   {
+    "id": "reddit-t1_pexpgre",
+    "source": "reddit",
+    "date": "2026-10-09T21:56:56+00:00",
+    "status": "got",
+    "text": "…itlist with a specific month goal of august for my steam controller, and got my email a month early. I could have missed that email. Now i have to keep this in back of mind for the next 4 months at least or even longer,…",
+    "reserved": null,
+    "reserved_approx": false,
+    "reserved_phrase": null,
+    "estimate": null,
+    "eu": [],
+    "thread": "r/SteamFrame",
+    "url": "https://www.reddit.com/r/SteamFrame/comments/1x1u17r/just_wow_incredibly_frustrating_day_1_res_list/pexpgre/",
+    "first_seen": "2026-10-22T14:58:23+00:00"
+   },
+   {
     "id": "reddit-t1_pews057",
     "source": "reddit",
     "date": "2026-10-09T19:25:14+00:00",
@@ -755,6 +813,21 @@
     "first_seen": "2026-10-22T14:28:32+00:00"
    },
    {
+    "id": "reddit-t1_pemnuwg",
+    "source": "reddit",
+    "date": "2026-10-08T12:52:49+00:00",
+    "status": "got",
+    "text": "Same here, I had switched queues from the 512 with no controller to the 512 with the controller on 9/29 and received my email yesterday.",
+    "reserved": null,
+    "reserved_approx": false,
+    "reserved_phrase": null,
+    "estimate": null,
+    "eu": [],
+    "thread": "r/steammachine",
+    "url": "https://www.reddit.com/r/steammachine/comments/1vg34w6/steam_machine_orders_and_arrivals_megathread/pemnuwg/",
+    "first_seen": "2026-10-22T14:58:23+00:00"
+   },
+   {
     "id": "reddit-t1_pek4zwo",
     "source": "reddit",
     "date": "2026-10-08T02:24:30+00:00",
@@ -805,9 +878,9 @@
     "date": "2026-10-01T09:23:21+00:00",
     "status": "got",
     "text": "…very least. PS: I also reserved the Steam Controller on 9th of May, and got my purchase mail on 1st of August. It went out on the 5th of August and arrived on the 7th (in the EU/GER)",
-    "reserved": null,
+    "reserved": "2026-05-09",
     "reserved_approx": false,
-    "reserved_phrase": null,
+    "reserved_phrase": "9th of May",
     "estimate": null,
     "eu": [
      "EU"
@@ -815,6 +888,21 @@
     "thread": "r/SteamFrame",
     "url": "https://www.reddit.com/r/SteamFrame/comments/1wjvbea/steam_frame_purchases_megathread/pd6bao1/",
     "first_seen": "2026-10-22T14:28:32+00:00"
+   },
+   {
+    "id": "reddit-t1_pd280j1",
+    "source": "reddit",
+    "date": "2026-09-30T19:02:47+00:00",
+    "status": "waiting",
+    "text": "Hum i wonder that to, i was initialy waitlisted at every draw but i got a frame reservation mail today. But might be months awat. For Steam controller it was reserved 8 may, complete buy mail was 20 jun. Steam machine wa…",
+    "reserved": "2026-05-08",
+    "reserved_approx": false,
+    "reserved_phrase": "8 may",
+    "estimate": null,
+    "eu": [],
+    "thread": "r/SteamFrame",
+    "url": "https://www.reddit.com/r/SteamFrame/comments/1wjiv5t/how_long_will_it_take_for_the_order_email_to_come/pd280j1/",
+    "first_seen": "2026-10-22T14:58:23+00:00"
    },
    {
     "id": "reddit-t3_1wublbw",
@@ -837,14 +925,29 @@
     "date": "2026-09-30T11:16:03+00:00",
     "status": "got",
     "text": "…une 1st and mine also says 2027. I refuse to believe that so many people bought the controller for them to take so long https://preview.redd.it/tc42b1zh5nsh1.jpeg?width=1295&format=pjpg&auto=webp&s=5f7596a953b59b93b84526…",
+    "reserved": "2026-06-01",
+    "reserved_approx": false,
+    "reserved_phrase": "june 1st",
+    "estimate": "2027",
+    "eu": [],
+    "thread": "r/Steam",
+    "url": "https://www.reddit.com/r/Steam/comments/1wt9sgf/steam_controller_just_became_available_in/pczaol7/",
+    "first_seen": "2026-10-22T14:28:32+00:00"
+   },
+   {
+    "id": "reddit-t1_pcpm7x6",
+    "source": "reddit",
+    "date": "2026-09-29T02:37:22+00:00",
+    "status": "got",
+    "text": "I got my Steam Controller purchase invite email (189 days I waited, since May 12th) while reading and being jealous of your Frame email!!",
     "reserved": null,
     "reserved_approx": false,
     "reserved_phrase": null,
     "estimate": null,
     "eu": [],
-    "thread": "r/Steam",
-    "url": "https://www.reddit.com/r/Steam/comments/1wt9sgf/steam_controller_just_became_available_in/pczaol7/",
-    "first_seen": "2026-10-22T14:28:32+00:00"
+    "thread": "r/SteamFrame",
+    "url": "https://www.reddit.com/r/SteamFrame/comments/1wsxf3u/i_have_decided/pcpm7x6/",
+    "first_seen": "2026-10-22T14:58:23+00:00"
    },
    {
     "id": "reddit-t1_pcix10k",
@@ -920,6 +1023,21 @@
     "thread": "r/SteamController · Should I be patient?",
     "url": "https://www.reddit.com/r/SteamController/comments/1wq4wef/should_i_be_patient/",
     "first_seen": "2026-10-22T14:28:32+00:00"
+   },
+   {
+    "id": "reddit-t1_pbvi9en",
+    "source": "reddit",
+    "date": "2026-09-25T00:17:11+00:00",
+    "status": "got",
+    "text": "…they didnt start the waitlist till it was gone. I ordered, bought, *and* received my controller before I even knew there was a waitlist. I was a lucky one. With this, they made the reserved list match the frames they hav…",
+    "reserved": null,
+    "reserved_approx": false,
+    "reserved_phrase": null,
+    "estimate": null,
+    "eu": [],
+    "thread": "r/SteamFrame",
+    "url": "https://www.reddit.com/r/SteamFrame/comments/1wjvbea/steam_frame_purchases_megathread/pbvi9en/",
+    "first_seen": "2026-10-22T14:58:23+00:00"
    },
    {
     "id": "reddit-t1_pbu0f5r",
