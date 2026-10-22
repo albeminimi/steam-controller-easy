@@ -1,17 +1,17 @@
 {
- "generated_at": "2026-10-22T08:46:17+00:00",
+ "generated_at": "2026-10-22T09:20:31+00:00",
  "sources": {
   "official": {
    "ok": true,
-   "updated_at": "2026-10-22T08:46:17+00:00"
+   "updated_at": "2026-10-22T09:20:31+00:00"
   },
   "store": {
    "ok": true,
-   "updated_at": "2026-10-22T08:46:17+00:00"
+   "updated_at": "2026-10-22T09:20:31+00:00"
   },
   "forum": {
    "ok": true,
-   "updated_at": "2026-10-22T08:46:17+00:00"
+   "updated_at": "2026-10-22T09:20:31+00:00"
   }
  },
  "official": [
@@ -260,7 +260,12 @@
    {
     "id": "583935635494245397-565922740069109916",
     "date": "2026-10-17T21:29:22+00:00",
+    "status": "got",
     "text": "I was out of town and didn't check my email until today - missed it by two days. This email notification outside of the Steam client sucks.",
+    "reserved": null,
+    "reserved_approx": false,
+    "reserved_phrase": null,
+    "estimate": null,
     "eu": [],
     "thread": "When should I get my steam controller",
     "url": "https://steamcommunity.com/app/4165870/discussions/0/583935635494245397/#c565922740069109916",
@@ -269,7 +274,12 @@
    {
     "id": "583935635494245397-583935973604235890",
     "date": "2026-10-03T22:53:49+00:00",
+    "status": "got",
     "text": "mine said 6 to 10 days and i got it on the second, bought it on the 26th",
+    "reserved": null,
+    "reserved_approx": false,
+    "reserved_phrase": null,
+    "estimate": null,
     "eu": [],
     "thread": "When should I get my steam controller",
     "url": "https://steamcommunity.com/app/4165870/discussions/0/583935635494245397/#c583935973604235890",
@@ -278,7 +288,12 @@
    {
     "id": "583935635494245397-op",
     "date": "2026-10-02T02:43:51+00:00",
+    "status": "got",
     "text": "I ordered yesterday and said 3-5 business days, will it come Monday to Wednesday or earlier?",
+    "reserved": null,
+    "reserved_approx": false,
+    "reserved_phrase": null,
+    "estimate": null,
     "eu": [],
     "thread": "When should I get my steam controller",
     "url": "https://steamcommunity.com/app/4165870/discussions/0/583935635494245397/",
@@ -287,7 +302,12 @@
    {
     "id": "571548834124044893-617710833111304646",
     "date": "2026-09-11T19:54:02+00:00",
+    "status": "got",
     "text": "I pre-ordered on 16th May and have just paid for it a moment ago when the email came through",
+    "reserved": "2026-05-16",
+    "reserved_approx": false,
+    "reserved_phrase": "16th May",
+    "estimate": null,
     "eu": [],
     "thread": "Available when?",
     "url": "https://steamcommunity.com/app/4165870/discussions/0/571548834124044893/#c617710833111304646",
@@ -296,16 +316,40 @@
    {
     "id": "571548834124044893-571548834124058292",
     "date": "2026-09-09T13:58:19+00:00",
+    "status": "got",
     "text": "It took me roughly 3 months to get my email and I preordered day 1 immediately. My original estimate was 2027. I got it like August 8th.",
+    "reserved": "2026-05-08",
+    "reserved_approx": false,
+    "reserved_phrase": "day 1",
+    "estimate": "2027",
     "eu": [],
     "thread": "Available when?",
     "url": "https://steamcommunity.com/app/4165870/discussions/0/571548834124044893/#c571548834124058292",
     "first_seen": "2026-10-22T07:11:27+00:00"
    },
    {
+    "id": "571548834124044893-op",
+    "date": "2026-09-09T10:39:22+00:00",
+    "status": "waiting",
+    "text": "I have my reservation since July 3rd and nothing. How long does it take to make more controllers?",
+    "reserved": "2026-07-03",
+    "reserved_approx": false,
+    "reserved_phrase": "July 3rd",
+    "estimate": null,
+    "eu": [],
+    "thread": "Available when?",
+    "url": "https://steamcommunity.com/app/4165870/discussions/0/571548834124044893/",
+    "first_seen": "2026-10-22T09:20:18+00:00"
+   },
+   {
     "id": "586185220309700078-op",
     "date": "2026-09-08T19:38:39+00:00",
+    "status": "got",
     "text": "Got the email for controller said three days to purchase but I am stuck in a loop. clicking link just goes to steam start page. It has been ongoing for a couple of days... It is now past the three days and I don't want t…",
+    "reserved": null,
+    "reserved_approx": false,
+    "reserved_phrase": null,
+    "estimate": null,
     "eu": [],
     "thread": "Email for controller",
     "url": "https://steamcommunity.com/app/4165870/discussions/0/586185220309700078/",
@@ -314,16 +358,40 @@
    {
     "id": "586184898467897752-586184898467901407",
     "date": "2026-09-02T09:21:36+00:00",
+    "status": "got",
     "text": "I have a similar situation. I finally got the invitation to purchase steam machine with controller and I made the purchase via PayPal. It went through in the morning so in steam, the order shows as 'Processed payment' ho…",
+    "reserved": null,
+    "reserved_approx": false,
+    "reserved_phrase": null,
+    "estimate": null,
     "eu": [],
     "thread": "Steam Controller purchase invitation failed and I can’t contact Support",
     "url": "https://steamcommunity.com/app/4165870/discussions/0/586184898467897752/#c586184898467901407",
     "first_seen": "2026-10-22T07:11:27+00:00"
    },
    {
+    "id": "586184264603689984-op",
+    "date": "2026-08-26T05:06:56+00:00",
+    "status": "got",
+    "text": "…December 2026. For about 5 days this August, I couldn't be online and I missed the window for the Steam controller. Is there nothing I can do except wait until who-knows-when in 2027 to be able to place an order? Edit:…",
+    "reserved": "2026-05-25",
+    "reserved_approx": true,
+    "reserved_phrase": "late May",
+    "estimate": "2026-12",
+    "eu": [],
+    "thread": "Missed Reservations...",
+    "url": "https://steamcommunity.com/app/4165870/discussions/0/586184264603689984/",
+    "first_seen": "2026-10-22T09:20:18+00:00"
+   },
+   {
     "id": "586182995821705289-585058037498248831",
     "date": "2026-08-23T17:41:33+00:00",
+    "status": "got",
     "text": "…. I knew it was an issue though so I tried to watch my email but I still missed it by a day. After being gaslight by support during the 1st wave that my payment issue must be incorrect if I wasn't able to buy a controlle…",
+    "reserved": null,
+    "reserved_approx": false,
+    "reserved_phrase": null,
+    "estimate": null,
     "eu": [],
     "thread": "Dumb that reservation notification comes in an email and not Steam's own notification system",
     "url": "https://steamcommunity.com/app/4165870/discussions/0/586182995821705289/#c585058037498248831",

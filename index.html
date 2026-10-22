@@ -216,6 +216,34 @@ code {
 .seg button { font: 500 13px var(--font-body); padding: 6px 12px; background: transparent; color: var(--muted); border: 0; cursor: pointer; }
 .seg button[aria-pressed="true"] { background: var(--accent-soft); color: var(--ink); }
 
+/* chi riceve la mail adesso */
+.who-sum { margin: 0; font-size: 16px; max-width: 70ch; }
+.who-sum b { font-weight: 600; }
+.who-me { margin: 0; padding: 10px 12px; border-radius: 8px; background: var(--warn-soft); font-size: 14px; max-width: 80ch; }
+.tablewrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 8px; }
+table.who { width: 100%; border-collapse: collapse; font-size: 14px; min-width: 640px; }
+table.who th { text-align: left; font: 500 11px/1.3 var(--font-mono); letter-spacing: .07em; text-transform: uppercase; color: var(--muted); padding: 9px 10px; border-bottom: 1px solid var(--line); background: var(--paper); white-space: nowrap; }
+table.who td { padding: 9px 10px; border-bottom: 1px solid var(--line); vertical-align: top; }
+table.who tr:last-child td { border-bottom: 0; }
+table.who td.num { font-family: var(--font-mono); font-variant-numeric: tabular-nums; white-space: nowrap; }
+table.who td.quote { color: var(--muted); font-size: 13px; min-width: 220px; }
+table.who tr.me td { background: var(--warn-soft); }
+@media (max-width: 640px) {
+  .tablewrap { border: 0; overflow: visible; }
+  table.who { min-width: 0; }
+  table.who thead { display: none; }
+  table.who, table.who tbody, table.who tr, table.who td { display: block; width: 100%; }
+  table.who tr { border: 1px solid var(--line); border-radius: 8px; padding: 6px 0; margin-bottom: 10px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  table.who td { border: 0; padding: 4px 12px; min-width: 0; }
+  table.who td::before { content: attr(data-l); display: block; font: 500 10.5px/1.4 var(--font-mono); letter-spacing: .07em; text-transform: uppercase; color: var(--muted); }
+  table.who td.quote { grid-column: 1 / -1; min-width: 0; }
+  table.who tr.me { border-color: var(--warn); background: var(--warn-soft); }
+  table.who tr.me td { background: transparent; }
+}
+.state { font: 500 11px/1.5 var(--font-mono); letter-spacing: .05em; text-transform: uppercase; padding: 1px 7px; border-radius: 4px; white-space: nowrap; }
+.state.got { background: var(--ok-soft); color: var(--ok); }
+.state.waiting { background: var(--paper); color: var(--muted); border: 1px solid var(--line); }
+
 /* cosa sappiamo */
 .facts { display: grid; gap: 12px; }
 .facts h3 { margin: 0 0 4px; font: 500 11px/1.3 var(--font-mono); letter-spacing: .08em; text-transform: uppercase; }
@@ -243,6 +271,17 @@ footer p { margin: 0; max-width: 75ch; }
   </header>
 
   <div class="tiles" id="tiles"></div>
+
+  <section class="box" aria-labelledby="h-who">
+    <h2 id="h-who">Chi riceve la mail adesso, e quando aveva prenotato <small>dai messaggi del forum Steam</small></h2>
+    <p class="who-sum" id="who-sum">Caricamento…</p>
+    <p class="who-me" id="who-me" hidden></p>
+    <div class="tablewrap"><table class="who">
+      <thead><tr><th scope="col">Messaggio del</th><th scope="col">Prenotato il</th><th scope="col">Giorni fino al messaggio</th><th scope="col">Stima Valve</th><th scope="col">Stato</th><th scope="col">Cosa ha scritto</th></tr></thead>
+      <tbody id="who-rows"></tbody>
+    </table></div>
+    <p class="note" id="who-note">Compare solo chi scrive anche la data in cui aveva prenotato. "~" indica una data approssimata (per esempio "fine maggio"). Lo stato è quello al momento del messaggio.</p>
+  </section>
 
   <div class="cols">
     <div class="col">
@@ -410,6 +449,7 @@ footer p { margin: 0; max-width: 75ch; }
     STATE.data = data;
     renderFreshness(data);
     renderTiles(data);
+    renderWho();
     renderReports();
     renderThreads(data);
     renderOfficial(data);
@@ -438,7 +478,7 @@ footer p { margin: 0; max-width: 75ch; }
   function renderTiles(d) {
     var store = d.store || {};
     var it = (store.countries || {}).it || {};
-    var reports = (d.forum && d.forum.reports) || [];
+    var reports = ((d.forum && d.forum.reports) || []).filter(isGot);
     var r30 = reports.filter(function (r) { return within(r.date, 30); });
     var r30eu = r30.filter(function (r) { return r.eu && r.eu.length; });
     var post = lastControllerQueuePost(d);
@@ -474,13 +514,78 @@ footer p { margin: 0; max-width: 75ch; }
     }).join("");
   }
 
+  function isGot(r) { return r.status !== "waiting"; }
+  var WINDOWS = { "2026-09": "Settembre 2026", "2026-12": "Dicembre 2026", "2027": "2027" };
+
+  function daysBetween(a, b) { return Math.round((new Date(b).getTime() - new Date(a).getTime()) / DAY); }
+  function fmtRes(r) { return (r.reserved_approx ? "~" : "") + fmtDate.format(new Date(r.reserved + "T12:00:00")); }
+
+  function renderWho() {
+    var d = STATE.data; if (!d) return;
+    var all = ((d.forum && d.forum.reports) || []).filter(function (r) { return r.reserved; })
+      .sort(function (a, b) { return a.date < b.date ? 1 : -1; });
+    var got = all.filter(isGot);
+    var span = 30, recent = got.filter(function (r) { return within(r.date, 30); });
+    if (!recent.length) { span = 60; recent = got; }
+    var sum;
+    if (!recent.length) {
+      sum = "Negli ultimi 60 giorni nessuno di quelli che hanno ricevuto la mail ha scritto quando aveva prenotato.";
+    } else {
+      var res = recent.map(function (r) { return r.reserved; }).sort();
+      var latest = recent.filter(function (r) { return r.reserved === res[res.length - 1]; })[0];
+      sum = (span === 60 ? "Negli ultimi 30 giorni nessuno ha scritto data di prenotazione e mail ricevuta insieme. Allargando a 60 giorni: " : "Negli ultimi 30 giorni ") + "" + (recent.length === 1 ? "<b>1 persona</b> ha" : "<b>" + recent.length + " persone</b> hanno") +
+        " scritto di aver ricevuto la mail indicando la data di prenotazione: " +
+        (res.length > 1 && res[0] !== res[res.length - 1]
+          ? "avevano prenotato tra il <b>" + esc(fmtDate.format(new Date(res[0] + "T12:00:00"))) + "</b> e il <b>" + esc(fmtRes(latest)) + "</b>."
+          : "aveva prenotato il <b>" + esc(fmtRes(latest)) + "</b>.") +
+        " La prenotazione più recente servita risulta del " + esc(fmtRes(latest)) + " (mail segnalata il " + esc(fmtDate.format(new Date(latest.date))) + ").";
+      var withEst = recent.filter(function (r) { return r.estimate; });
+      if (withEst.length) sum += " " + withEst.length + " di loro " + (withEst.length === 1 ? "cita" : "citano") + " anche la stima Valve: " +
+        withEst.map(function (r) { return WINDOWS[r.estimate]; }).join(", ") + ".";
+    }
+    $("who-sum").innerHTML = sum;
+
+    var me = $("who-me");
+    if (mine.reserved && recent.length) {
+      var maxRes = recent.map(function (r) { return r.reserved; }).sort().pop();
+      var gap = daysBetween(maxRes, mine.reserved);
+      me.hidden = false;
+      me.innerHTML = gap <= 0
+        ? "Tu hai prenotato il <b>" + esc(fmtDate.format(new Date(mine.reserved + "T12:00:00"))) + "</b>, prima o insieme alla prenotazione più recente servita. Se ancora non hai la mail, controlla lo spam e la pagina Steam: l'ordine non è strettamente cronologico e le code potrebbero essere per regione."
+        : "Tu hai prenotato il <b>" + esc(fmtDate.format(new Date(mine.reserved + "T12:00:00"))) + "</b>, cioè <b>" + gap + " giorni dopo</b> la prenotazione più recente servita. È un confronto su pochi casi, quasi tutti senza paese: prendilo come indizio, non come previsione.";
+    } else if (!mine.reserved) {
+      me.hidden = false;
+      me.innerHTML = "Inserisci la data della tua prenotazione nel riquadro \"La tua prenotazione\" per confrontarla con chi sta ricevendo la mail.";
+    } else {
+      me.hidden = true;
+    }
+
+    var rows = all.slice(0, 25);
+    if (mine.reserved) rows = [{ me: true, reserved: mine.reserved }].concat(rows);
+    if (!all.length) {
+      $("who-rows").innerHTML = '<tr><td colspan="6" class="quote">Nessun messaggio con una data di prenotazione negli ultimi 60 giorni.</td></tr>';
+      return;
+    }
+    $("who-rows").innerHTML = rows.map(function (r) {
+      if (r.me) {
+        return '<tr class="me"><td class="num" data-l="Messaggio del">oggi</td><td class="num" data-l="Prenotato il">' + esc(fmtDate.format(new Date(r.reserved + "T12:00:00"))) + '</td><td class="num" data-l="Giorni">' +
+          Math.max(0, daysBetween(r.reserved, new Date().toISOString())) + ' gg</td><td data-l="Stima Valve">' + esc(WINDOWS[mine.window] || "—") + '</td><td data-l="Stato"><span class="state waiting">' +
+          (mine.got ? "Mail ricevuta" : "In attesa") + '</span></td><td class="quote" data-l="Chi">Tu</td></tr>';
+      }
+      var wait = daysBetween(r.reserved, r.date);
+      return "<tr><td class=\"num\" data-l=\"Messaggio del\">" + esc(fmtDate.format(new Date(r.date))) + '</td><td class="num" data-l="Prenotato il">' + esc(fmtRes(r)) + '</td><td class="num" data-l="Giorni">' +
+        wait + ' gg</td><td data-l="Stima Valve">' + esc(WINDOWS[r.estimate] || "—") + '</td><td data-l="Stato"><span class="state ' + (isGot(r) ? "got\">Mail ricevuta" : "waiting\">Ancora in attesa") + "</span>" +
+        (r.eu && r.eu.length ? ' <span class="tag eu">Europa</span>' : "") + '</td><td class="quote" data-l="Cosa ha scritto">«' + esc(r.text) + '» <a href="' + esc(safeUrl(r.url)) + '" target="_blank" rel="noopener">fonte</a></td></tr>';
+    }).join("");
+  }
+
   function euTag(list) {
     return list && list.length ? '<span class="tag eu" title="' + esc(list.join(", ")) + '">Europa · ' + esc(list.slice(0, 2).join(", ")) + "</span>" : "";
   }
 
   function renderReports() {
     var d = STATE.data; if (!d) return;
-    var all = ((d.forum && d.forum.reports) || []).slice().sort(function (a, b) { return a.date < b.date ? 1 : -1; });
+    var all = ((d.forum && d.forum.reports) || []).filter(isGot).sort(function (a, b) { return a.date < b.date ? 1 : -1; });
     var list = STATE.filter === "eu" ? all.filter(function (r) { return r.eu && r.eu.length; }) : all;
     $("reports-count").textContent = list.length + " negli ultimi 60 giorni";
     if (!list.length) {
@@ -589,6 +694,7 @@ footer p { margin: 0; max-width: 75ch; }
     v.className = "verdict " + (cls === "info" ? "" : cls);
     v.innerHTML = html;
     renderTimeline();
+    renderWho();
   }
 
   function bind() {

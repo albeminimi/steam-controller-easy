@@ -81,6 +81,7 @@ EMAIL_GOT_RE = re.compile(
     r"|(e-?mail|invite)\s+(came|arrived|showed up|just came|finally came)"
     # chi ha mancato le 72 ore o ha già comprato, la mail l'ha ricevuta
     r"|missed\s+(it|the\s+(e-?mail|window|deadline|invite))\s+by"
+    r"|missed\s+(the|my)\s+(purchase\s+|order\s+|72[\s-]?h(ou)?r?\s+)?(window|e-?mail|invite|deadline)"
     r"|\b(just\s+|finally\s+)?(bought|purchased|paid\s+for)\s+(it|mine|one|the\s+controller)\b"
     r"|\bi\s+(just\s+|finally\s+)?ordered\s+(it|mine|one|yesterday|today)\b"
     r"|(ricevut[oa]|arrivat[ao])\s+(la|l'|una)?\s*(e-?mail|mail)"
@@ -89,6 +90,92 @@ EMAIL_GOT_RE = re.compile(
     r"|(recib[ií]|me\s+lleg[oó])\s+(el|un)?\s*(correo|e-?mail|mail)",
     re.I,
 )
+
+# Data di prenotazione citata nel messaggio ("reserved on May 16th", "pre-ordered day 1"...).
+MONTHS = {
+    "jan": 1, "january": 1, "gennaio": 1, "januar": 1, "janvier": 1, "enero": 1,
+    "feb": 2, "february": 2, "febbraio": 2, "februar": 2, "février": 2, "fevrier": 2, "febrero": 2,
+    "mar": 3, "march": 3, "marzo": 3, "märz": 3, "maerz": 3, "mars": 3,
+    "apr": 4, "april": 4, "aprile": 4, "avril": 4, "abril": 4,
+    "may": 5, "maggio": 5, "mai": 5, "mayo": 5,
+    "jun": 6, "june": 6, "giugno": 6, "juni": 6, "juin": 6, "junio": 6,
+    "jul": 7, "july": 7, "luglio": 7, "juli": 7, "juillet": 7, "julio": 7,
+    "aug": 8, "august": 8, "agosto": 8, "août": 8, "aout": 8,
+    "sep": 9, "sept": 9, "september": 9, "settembre": 9, "septembre": 9, "septiembre": 9,
+    "oct": 10, "october": 10, "ottobre": 10, "oktober": 10, "octobre": 10, "octubre": 10,
+    "nov": 11, "november": 11, "novembre": 11, "noviembre": 11,
+    "dec": 12, "december": 12, "dicembre": 12, "dezember": 12, "décembre": 12, "decembre": 12, "diciembre": 12,
+}
+_MON = "|".join(sorted(MONTHS, key=len, reverse=True))
+RES_KW_RE = re.compile(
+    r"reserv\w*|pre-?order\w*|preorder\w*|queued|queue|signed\s+up|wait\s?list|"
+    r"prenot\w*|reservier\w*|vorbestell\w*|r[ée]serv\w*|reserv[ée]\w*", re.I)
+DATE_RE = re.compile(
+    r"(?<![\w/])(?P<d1>\d{1,2})(?:st|nd|rd|th)?\s+(?:of\s+)?(?P<m1>" + _MON + r")\.?(?![a-z])"
+    r"|(?<![a-z])(?P<m2>" + _MON + r")\.?\s+(?P<d2>\d{1,2})(?:st|nd|rd|th)?(?![\d:])"
+    r"|(?P<part>early|mid|late|end\s+of|beginning\s+of|inizio|met[aà]|fine)\s+(?:of\s+|di\s+)?(?P<m3>" + _MON + r")(?![a-z])"
+    r"|(?:\bin|\bnel(?:la)?\s+(?:mese\s+di\s+)?|\bim|\ben)\s+(?P<m4>" + _MON + r")(?![a-z])"
+    r"|(?P<day1>day\s+(?:1|one)\b|launch\s+day|first\s+day|opening\s+day|primo\s+giorno|"
+    r"(?:right\s+)?when\s+(?:the\s+)?reservations?\s+(?:opened|went\s+live))",
+    re.I)
+ESTIMATE_RE = re.compile(
+    r"(?:estimat\w*|window|stima|finestra|said|showed|shows|says)\D{0,25}?(?P<a>sept(?:ember)?|dec(?:ember)?|2027|settembre|dicembre)"
+    r"|(?P<b>sept(?:ember)?|dec(?:ember)?|2027|settembre|dicembre)\s+(?:2026\s+)?(?:estimat\w*|window|finestra)",
+    re.I)
+RES_OPEN = dt.date(2026, 5, 8)
+OTHER_EVENT_RE = re.compile(r"\b(got|received|recieved|e-?mail|mail|bought|paid|purchased|arrived|shipped|delivered|ricevut\w*|arrivat\w*|spedit\w*)\b", re.I)
+
+
+def reservation_info(text, post_ts):
+    """Cerca nel testo la data di prenotazione (vicino a parole come "reserved") e la stima Valve."""
+    posted = dt.datetime.fromtimestamp(post_ts, dt.timezone.utc).date()
+    out = {"reserved": None, "reserved_approx": False, "reserved_phrase": None, "estimate": None}
+    for m in DATE_RE.finditer(text):
+        # La parola di prenotazione deve stare subito prima della data senza un "got the
+        # email" in mezzo ("reserved in May and got the email on Sept 3": il 3 settembre
+        # non è la prenotazione), oppure subito dopo ("16th May reservation").
+        before = text[max(0, m.start() - 60): m.start()]
+        after = text[m.end(): m.end() + 15]
+        res_b = [x.end() for x in RES_KW_RE.finditer(before)]
+        oth_b = [x.end() for x in OTHER_EVENT_RE.finditer(before)]
+        res_a = [x.start() for x in RES_KW_RE.finditer(after)]
+        oth_a = [x.start() for x in OTHER_EVENT_RE.finditer(after)]
+        ok_before = res_b and (not oth_b or max(res_b) > max(oth_b))
+        ok_after = res_a and not oth_a and not (oth_b and (not res_b or max(oth_b) > max(res_b)))
+        if not (ok_before or ok_after):
+            continue
+        if m.group("day1"):
+            day, approx = RES_OPEN, False
+        else:
+            mon = MONTHS[(m.group("m1") or m.group("m2") or m.group("m3") or m.group("m4")).lower()]
+            if m.group("m4"):
+                d, approx = 15, True
+            elif m.group("part"):
+                part = m.group("part").lower()
+                d = 5 if part.startswith(("early", "beginning", "inizio")) else 15 if part.startswith(("mid", "met")) else 25
+                approx = True
+            else:
+                d = int(m.group("d1") or m.group("d2"))
+                approx = False
+            day = None
+            for year in (posted.year, posted.year - 1):
+                try:
+                    cand = dt.date(year, mon, d)
+                except ValueError:
+                    break
+                if RES_OPEN <= cand <= posted:
+                    day = cand
+                    break
+            if day is None:
+                continue
+        out.update(reserved=day.isoformat(), reserved_approx=approx, reserved_phrase=m.group(0).strip())
+        break
+    e = ESTIMATE_RE.search(text)
+    if e:
+        w = (e.group("a") or e.group("b")).lower()
+        out["estimate"] = "2027" if w == "2027" else "2026-09" if w.startswith(("sep", "set")) else "2026-12"
+    return out
+
 
 LAST_REQUEST = [0.0]
 
@@ -298,16 +385,23 @@ def collect_forum(errors):
             terms = eu_terms(c["text"])
             if terms and not t["eu"]:
                 t["eu"] = terms
+            if c["ts"] < cutoff:
+                continue
             m = EMAIL_GOT_RE.search(c["text"])
-            if m and c["ts"] >= cutoff:
-                reports.append({
-                    "id": f"{t['id']}-{c['id']}",
-                    "date": iso(c["ts"]),
-                    "text": snippet(c["text"], m),
-                    "eu": terms or (t["eu"] if eu_in_thread else []),
-                    "thread": t["title"],
-                    "url": t["url"] + (f"?ctp={last_page}" if last_page > 1 else "") + (f"#c{c['id']}" if c["id"] != "op" else ""),
-                })
+            info = reservation_info(c["text"], c["ts"])
+            # Teniamo chi ha ricevuto la mail, e chi aspetta ancora ma dice da quando.
+            if not m and not info["reserved"]:
+                continue
+            reports.append({
+                "id": f"{t['id']}-{c['id']}",
+                "date": iso(c["ts"]),
+                "status": "got" if m else "waiting",
+                "text": snippet(c["text"], m or RES_KW_RE.search(c["text"])),
+                **info,
+                "eu": terms or (t["eu"] if eu_in_thread else []),
+                "thread": t["title"],
+                "url": t["url"] + (f"?ctp={last_page}" if last_page > 1 else "") + (f"#c{c['id']}" if c["id"] != "op" else ""),
+            })
     for t in relevant:
         t["last_post"] = iso(t["last_post"]) if t["last_post"] else None
         t["preview"] = snippet(t["preview"], size=200)
