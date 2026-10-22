@@ -273,7 +273,7 @@ footer p { margin: 0; max-width: 75ch; }
   <div class="tiles" id="tiles"></div>
 
   <section class="box" aria-labelledby="h-who">
-    <h2 id="h-who">Chi riceve la mail adesso, e quando aveva prenotato <small>dai messaggi del forum Steam</small></h2>
+    <h2 id="h-who">Chi riceve la mail adesso, e quando aveva prenotato <small>dai messaggi del forum Steam e di Reddit</small></h2>
     <p class="who-sum" id="who-sum">Caricamento…</p>
     <p class="who-me" id="who-me" hidden></p>
     <div class="tablewrap"><table class="who">
@@ -342,13 +342,13 @@ footer p { margin: 0; max-width: 75ch; }
             <button type="button" data-filter="all" aria-pressed="true">Tutte</button>
             <button type="button" data-filter="eu" aria-pressed="false">Solo Europa</button>
           </div>
-          <span class="note">Messaggi del forum Steam di chi dice di aver ricevuto la mail o di aver già comprato.</span>
+          <span class="note">Messaggi del forum Steam e di Reddit di chi dice di aver ricevuto la mail o di aver già comprato.</span>
         </div>
         <ul class="feed" id="reports"></ul>
       </section>
 
       <section class="box" aria-labelledby="h-threads">
-        <h2 id="h-threads">Discussioni su coda e spedizioni <small>forum Steam Controller</small></h2>
+        <h2 id="h-threads">Discussioni su coda e spedizioni <small>forum Steam e Reddit</small></h2>
         <ul class="feed" id="threads"></ul>
       </section>
 
@@ -396,7 +396,7 @@ footer p { margin: 0; max-width: 75ch; }
   </section>
 
   <footer>
-    <p>Dati raccolti da una GitHub Action ogni 3 ore dal feed RSS degli annunci hardware Valve, dall'API dello Steam Store (prezzi in IT, DE, FR, ES, NL, GB) e dal forum "General Discussions" dello Steam Controller. Le segnalazioni sono riconosciute in automatico da frasi come "got my email": possono esserci falsi positivi e mancare messaggi che non citano il paese.</p>
+    <p>Dati raccolti da una GitHub Action ogni 3 ore dal feed RSS degli annunci hardware Valve, dall'API dello Steam Store (prezzi in IT, DE, FR, ES, NL, GB) dal forum "General Discussions" dello Steam Controller e da Reddit (r/SteamController, r/Steam, r/SteamMachine, r/SteamFrame, r/SteamDeck). Reddit blocca spesso le richieste automatiche: in quel caso i post arrivano dall'archivio pubblico PullPush, che ha qualche giorno di ritardo. Su Reddit si scartano i messaggi sui bundle Steam Machine "con controller", che hanno una coda separata. Le segnalazioni sono riconosciute in automatico da frasi come "got my email": possono esserci falsi positivi e mancare messaggi che non citano il paese.</p>
     <p>Sito non ufficiale, non affiliato a Valve. <a href="https://github.com/albeminimi/steam-controller-easy">Codice e storico dati su GitHub</a>.</p>
   </footer>
 </div>
@@ -461,11 +461,15 @@ footer p { margin: 0; max-width: 75ch; }
     var age = (Date.now() - new Date(gen).getTime()) / 3600000;
     var cls = age < 7 ? "ok" : age < 24 ? "warn" : "bad";
     var html = '<span class="pill ' + cls + '">Aggiornato ' + esc(fmtTime.format(new Date(gen))) + " · " + esc(ago(gen)) + "</span>";
-    var names = { official: "Annunci Valve", store: "Store", forum: "Forum" };
+    var names = { official: "Annunci Valve", store: "Store", forum: "Forum Steam", reddit: "Reddit" };
     Object.keys(names).forEach(function (k) {
       var s = (d.sources || {})[k];
       if (s && !s.ok) html += '<span class="pill bad">' + names[k] + " non raggiungibile</span>";
     });
+    var rd = d.reddit || {};
+    if (rd.via === "pullpush" && rd.latest) {
+      html += '<span class="pill warn">Reddit via archivio: ultimo post ' + esc(fmtShort.format(new Date(rd.latest))) + "</span>";
+    }
     if (age >= 24) html += '<span class="pill plain">I dati non si aggiornano da più di un giorno: controlla la GitHub Action</span>';
     $("freshness").innerHTML = html;
   }
@@ -478,7 +482,7 @@ footer p { margin: 0; max-width: 75ch; }
   function renderTiles(d) {
     var store = d.store || {};
     var it = (store.countries || {}).it || {};
-    var reports = ((d.forum && d.forum.reports) || []).filter(isGot);
+    var reports = allReports(d).filter(isGot);
     var r30 = reports.filter(function (r) { return within(r.date, 30); });
     var r30eu = r30.filter(function (r) { return r.eu && r.eu.length; });
     var post = lastControllerQueuePost(d);
@@ -514,6 +518,10 @@ footer p { margin: 0; max-width: 75ch; }
     }).join("");
   }
 
+  function allReports(d) {
+    return ((d.forum && d.forum.reports) || []).concat((d.reddit && d.reddit.reports) || []);
+  }
+  function srcTag(x) { return '<span class="tag">' + (x.source === "reddit" ? "Reddit" : "Steam") + "</span>"; }
   function isGot(r) { return r.status !== "waiting"; }
   var WINDOWS = { "2026-09": "Settembre 2026", "2026-12": "Dicembre 2026", "2027": "2027" };
 
@@ -522,7 +530,7 @@ footer p { margin: 0; max-width: 75ch; }
 
   function renderWho() {
     var d = STATE.data; if (!d) return;
-    var all = ((d.forum && d.forum.reports) || []).filter(function (r) { return r.reserved; })
+    var all = allReports(d).filter(function (r) { return r.reserved; })
       .sort(function (a, b) { return a.date < b.date ? 1 : -1; });
     var got = all.filter(isGot);
     var span = 30, recent = got.filter(function (r) { return within(r.date, 30); });
@@ -575,7 +583,7 @@ footer p { margin: 0; max-width: 75ch; }
       var wait = daysBetween(r.reserved, r.date);
       return "<tr><td class=\"num\" data-l=\"Messaggio del\">" + esc(fmtDate.format(new Date(r.date))) + '</td><td class="num" data-l="Prenotato il">' + esc(fmtRes(r)) + '</td><td class="num" data-l="Giorni">' +
         wait + ' gg</td><td data-l="Stima Valve">' + esc(WINDOWS[r.estimate] || "—") + '</td><td data-l="Stato"><span class="state ' + (isGot(r) ? "got\">Mail ricevuta" : "waiting\">Ancora in attesa") + "</span>" +
-        (r.eu && r.eu.length ? ' <span class="tag eu">Europa</span>' : "") + '</td><td class="quote" data-l="Cosa ha scritto">«' + esc(r.text) + '» <a href="' + esc(safeUrl(r.url)) + '" target="_blank" rel="noopener">fonte</a></td></tr>';
+        (r.eu && r.eu.length ? ' <span class="tag eu">Europa</span>' : "") + '</td><td class="quote" data-l="Cosa ha scritto">' + srcTag(r) + ' «' + esc(r.text) + '» <a href="' + esc(safeUrl(r.url)) + '" target="_blank" rel="noopener">fonte</a></td></tr>';
     }).join("");
   }
 
@@ -585,7 +593,7 @@ footer p { margin: 0; max-width: 75ch; }
 
   function renderReports() {
     var d = STATE.data; if (!d) return;
-    var all = ((d.forum && d.forum.reports) || []).filter(isGot).sort(function (a, b) { return a.date < b.date ? 1 : -1; });
+    var all = allReports(d).filter(isGot).sort(function (a, b) { return a.date < b.date ? 1 : -1; });
     var list = STATE.filter === "eu" ? all.filter(function (r) { return r.eu && r.eu.length; }) : all;
     $("reports-count").textContent = list.length + " negli ultimi 60 giorni";
     if (!list.length) {
@@ -596,18 +604,19 @@ footer p { margin: 0; max-width: 75ch; }
     }
     $("reports").innerHTML = list.slice(0, 15).map(function (r) {
       var fresh = within(r.date, 2) ? '<span class="tag new">Nuova</span>' : "";
-      return "<li><div class=\"row\"><span>" + esc(fmtDate.format(new Date(r.date))) + "</span>" + euTag(r.eu) + fresh +
+      return "<li><div class=\"row\"><span>" + esc(fmtDate.format(new Date(r.date))) + "</span>" + srcTag(r) + euTag(r.eu) + fresh +
         '</div><blockquote>«' + esc(r.text) + '»</blockquote><div class="row"><a href="' + esc(safeUrl(r.url)) + '" target="_blank" rel="noopener">' + esc(r.thread) + "</a></div></li>";
     }).join("");
   }
 
   function renderThreads(d) {
-    var list = (d.forum && d.forum.threads) || [];
+    var list = ((d.forum && d.forum.threads) || []).concat((d.reddit && d.reddit.threads) || [])
+      .sort(function (a, b) { return a.last_post < b.last_post ? 1 : -1; });
     if (!list.length) { $("threads").innerHTML = '<li class="empty">Nessuna discussione recente su coda o spedizioni.</li>'; return; }
     $("threads").innerHTML = list.slice(0, 12).map(function (t) {
       var hot = within(t.last_post, 3) ? '<span class="tag hot">Attiva</span>' : "";
       return '<li><div class="title"><a href="' + esc(safeUrl(t.url)) + '" target="_blank" rel="noopener">' + esc(t.title) + "</a></div>" +
-        '<div class="row"><span>Ultimo post ' + esc(ago(t.last_post)) + "</span><span>" + t.replies + " risposte</span>" + euTag(t.eu) + hot + "</div>" +
+        '<div class="row">' + srcTag(t) + '<span>Ultimo post ' + esc(ago(t.last_post)) + "</span><span>" + t.replies + " risposte</span>" + euTag(t.eu) + hot + "</div>" +
         (t.preview ? '<div class="note">' + esc(t.preview) + "</div>" : "") + "</li>";
     }).join("");
   }

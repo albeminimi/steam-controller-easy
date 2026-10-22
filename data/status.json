@@ -1,17 +1,22 @@
 {
- "generated_at": "2026-10-22T09:20:31+00:00",
+ "generated_at": "2026-10-22T14:16:56+00:00",
  "sources": {
   "official": {
    "ok": true,
-   "updated_at": "2026-10-22T09:20:31+00:00"
+   "updated_at": "2026-10-22T14:16:56+00:00"
   },
   "store": {
    "ok": true,
-   "updated_at": "2026-10-22T09:20:31+00:00"
+   "updated_at": "2026-10-22T14:16:56+00:00"
   },
   "forum": {
    "ok": true,
-   "updated_at": "2026-10-22T09:20:31+00:00"
+   "updated_at": "2026-10-22T14:16:56+00:00"
+  },
+  "reddit": {
+   "ok": false,
+   "error": "PullPush non raggiungibile: HTTP Error 429: Too Many Requests",
+   "updated_at": null
   }
  },
  "official": [
@@ -316,7 +321,7 @@
    {
     "id": "571548834124044893-571548834124058292",
     "date": "2026-09-09T13:58:19+00:00",
-    "status": "got",
+    "status": "waiting",
     "text": "It took me roughly 3 months to get my email and I preordered day 1 immediately. My original estimate was 2027. I got it like August 8th.",
     "reserved": "2026-05-08",
     "reserved_approx": false,
@@ -400,6 +405,13 @@
   ],
   "pages_read": 8
  },
+ "reddit": {
+  "threads": [],
+  "reports": []
+ },
  "events": [],
- "errors": []
+ "errors": [
+  "reddit diretto: HTTP Error 403: Blocked (uso PullPush)",
+  "reddit: PullPush non raggiungibile: HTTP Error 429: Too Many Requests"
+ ]
 }

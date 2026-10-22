@@ -39,6 +39,13 @@ SEARCH_QUERIES = ["email", "reservation", "order email", "Europe", "EU"]
 KEEP_DAYS = 60           # quanto a lungo tenere thread e segnalazioni
 DELAY = 3.5              # secondi tra le richieste a steamcommunity.com
 
+# Reddit: prima l'API pubblica di Reddit (dati freschi), che però blocca spesso i
+# server cloud; in quel caso l'archivio PullPush (stessi post, ma con giorni di ritardo).
+REDDIT_SUBS = ["SteamController", "Steam", "SteamMachine", "SteamFrame", "SteamDeck"]
+REDDIT_QUERIES = ["controller email", "controller reserved", "controller reservation", "controller invite"]
+REDDIT_POST_QUERIES = ["steam controller email", "steam controller reservation"]
+PULLPUSH = "https://api.pullpush.io/reddit/search"
+
 OUT = Path(__file__).resolve().parent.parent / "data" / "status.json"
 UA = "Mozilla/5.0 (compatible; steam-controller-easy status bot; +https://github.com/albeminimi/steam-controller-easy)"
 
@@ -76,8 +83,9 @@ EU_RE = re.compile(
 
 # Frasi del tipo "ho ricevuto la mail per acquistare".
 EMAIL_GOT_RE = re.compile(
-    r"(got|received|recieved|get|getting|gotten|had)\s+(my|the|an|our|a|this)?\s*"
-    r"(purchase|order|buy|reservation|invite|invitation)?\s*(e-?mail|invite|invitation)"
+    r"(got|received|recieved|gotten|had)\s+(?:[\w-]+\s+){0,3}?(e-?mail|invite|invitation)"
+    r"|(got|received|recieved)\s+(mine|my\s+controller|the\s+controller|my\s+purchase|it\s+(today|yesterday|this\s+week))\b"
+    r"|(got|received|recieved)\s+it\s+(sometime|in\s+(late|early|mid)|last\s+\w+|a\s+(few|couple))"
     r"|(e-?mail|invite)\s+(came|arrived|showed up|just came|finally came)"
     # chi ha mancato le 72 ore o ha già comprato, la mail l'ha ricevuta
     r"|missed\s+(it|the\s+(e-?mail|window|deadline|invite))\s+by"
@@ -175,6 +183,21 @@ def reservation_info(text, post_ts):
         w = (e.group("a") or e.group("b")).lower()
         out["estimate"] = "2027" if w == "2027" else "2026-09" if w.startswith(("sep", "set")) else "2026-12"
     return out
+
+
+NEGATION_RE = re.compile(
+    r"(haven'?t|have\s+not|hasn'?t|didn'?t|did\s+not|never|not\s+yet|still\s+no|no\s+one|nobody|"
+    r"waiting\s+(to|for)|hope\s+to|could|would|will|might|(want|wanted|hoping|need|going|have|trying)\s+to|until\s+i|before\s+i|if\s+(you|i)|when\s+(you|i)|once\s+(you|i)|"
+    r"non\s+(ho|mi)|ancora\s+(niente|nessuna)|nicht|noch\s+kein|pas\s+encore|todav[ií]a\s+no)\W+(\w+\W+){0,3}$",
+    re.I)
+
+
+def got_email(text):
+    """Prima frase "ho ricevuto la mail" non negata ("haven't gotten an email" non conta)."""
+    for m in EMAIL_GOT_RE.finditer(text):
+        if not NEGATION_RE.search(text[max(0, m.start() - 40): m.start()]):
+            return m
+    return None
 
 
 LAST_REQUEST = [0.0]
@@ -387,7 +410,7 @@ def collect_forum(errors):
                 t["eu"] = terms
             if c["ts"] < cutoff:
                 continue
-            m = EMAIL_GOT_RE.search(c["text"])
+            m = got_email(c["text"])
             info = reservation_info(c["text"], c["ts"])
             # Teniamo chi ha ricevuto la mail, e chi aspetta ancora ma dice da quando.
             if not m and not info["reserved"]:
@@ -408,6 +431,133 @@ def collect_forum(errors):
         t.pop("pinned", None)
         t.pop("locked", None)
     return {"threads": relevant[:40], "reports": reports, "pages_read": pages_ok}
+
+
+# ---------------------------------------------------------------- reddit
+
+CONTROLLER_RE = re.compile(r"\bcontroller\b", re.I)
+# Steam Machine e Frame: i bundle "512 w/ controller" hanno code e waitlist proprie
+# (il Controller non ha waitlist), quindi le loro mail non contano.
+OTHER_PRODUCT_RE = re.compile(
+    r"\b(machine|frame|gabe\s?cube|deck|index|bundle|512|2\s?tb|1\s?tb|wait\s?-?list\w*|sku)\b"
+    r"|\b(with|w/|w|without|w/o|no)\s+(a\s+)?controller\b", re.I)
+EXPLICIT_RE = re.compile(r"steam\s+controller|controller\s+(queue|reservation|e-?mail|purchase)|my\s+controller|the\s+controller", re.I)
+
+
+def about_controller(text, m, in_controller_sub):
+    """La frase trovata parla del Controller e non di Steam Machine/Frame?"""
+    window = text[max(0, m.start() - 90): m.end() + 90]
+    if OTHER_PRODUCT_RE.search(window):
+        return False
+    return in_controller_sub or bool(EXPLICIT_RE.search(window))
+
+
+def _reddit_json(url, wait=6):
+    time.sleep(wait)
+    try:
+        return json.loads(fetch(url, tries=1))
+    except urllib.error.HTTPError as e:
+        if e.code != 429:
+            raise
+        time.sleep(45)  # PullPush e Reddit limitano le richieste ravvicinate
+        return json.loads(fetch(url, tries=1))
+
+
+def reddit_items_direct(since):
+    """Post e commenti recenti dall'API pubblica di Reddit (spesso 403/429 dai server cloud)."""
+    items = []
+    subs = "+".join(REDDIT_SUBS)
+    for q in REDDIT_QUERIES:
+        url = (f"https://www.reddit.com/r/{subs}/search.json?q={urllib.parse.quote(q)}"
+               f"&restrict_sr=1&sort=new&t=month&limit=50&raw_json=1")
+        for ch in _reddit_json(url)["data"]["children"]:
+            items.append(("post", ch["data"]))
+    for ch in _reddit_json(f"https://www.reddit.com/r/SteamController/comments.json?limit=100&raw_json=1")["data"]["children"]:
+        items.append(("comment", ch["data"]))
+    return [(k, d) for k, d in items if d.get("created_utc", 0) >= since]
+
+
+def reddit_items_pullpush(since):
+    # PullPush accetta un solo subreddit per richiesta: cerchiamo su tutto Reddit e
+    # teniamo solo i subreddit che ci interessano.
+    items = []
+    wanted = {x.lower() for x in REDDIT_SUBS}
+    calls = [("comment", f"{PULLPUSH}/comment/?subreddit=SteamController&after={int(since)}&size=100&sort=desc")]
+    calls += [("comment", f"{PULLPUSH}/comment/?q={urllib.parse.quote(q)}&after={int(since)}&size=100&sort=desc")
+              for q in REDDIT_QUERIES]
+    calls += [("post", f"{PULLPUSH}/submission/?q={urllib.parse.quote(q)}&after={int(since)}&size=100&sort=desc")
+              for q in REDDIT_POST_QUERIES]
+    failed = []
+    for kind, url in calls:
+        try:
+            data = _reddit_json(url).get("data", [])
+        except Exception as e:  # una ricerca che fallisce non butta via le altre
+            failed.append(str(e))
+            continue
+        for d in data:
+            if (d.get("subreddit") or "").lower() in wanted:
+                items.append((kind, d))
+    if len(failed) == len(calls):
+        raise RuntimeError(f"PullPush non raggiungibile: {failed[0]}")
+    return items
+
+
+def collect_reddit(errors):
+    since = time.time() - KEEP_DAYS * 86400
+    try:
+        items, via = reddit_items_direct(since), "reddit"
+    except Exception as e:
+        errors.append(f"reddit diretto: {e} (uso PullPush)")
+        items, via = reddit_items_pullpush(since), "pullpush"
+    reports, threads, seen = [], {}, set()
+    latest = 0
+    for kind, d in items:
+        rid = d.get("name") or d.get("id")
+        if not rid or rid in seen:
+            continue
+        seen.add(rid)
+        ts = int(d.get("created_utc") or 0)
+        latest = max(latest, ts)
+        sub = d.get("subreddit") or ""
+        url = "https://www.reddit.com" + (d.get("permalink") or "")
+        title = d.get("title") or d.get("link_title") or ""
+        text = strip_html(html.escape(d.get("body") or d.get("selftext") or ""))
+        whole = f"{title} {text}"
+        if text in ("[deleted]", "[removed]"):
+            continue
+        # Fuori da r/SteamController serve che si parli del controller.
+        if sub.lower() != "steamcontroller" and not CONTROLLER_RE.search(whole):
+            continue
+        if kind == "post" and (TITLE_RE.search(title) or PREVIEW_RE.search(text)):
+            threads[rid] = {
+                "id": f"reddit-{rid}", "source": "reddit", "title": f"{title} (r/{sub})",
+                "preview": snippet(text, size=200), "url": url, "last_post": iso(ts),
+                "replies": int(d.get("num_comments") or 0), "eu": eu_terms(whole),
+            }
+        body = text if kind == "comment" else whole
+        in_sub = sub.lower() == "steamcontroller"
+        m = got_email(body)
+        if m and not about_controller(body, m, in_sub):
+            m = None
+        info = reservation_info(body, ts)
+        if info["reserved"]:
+            rm = RES_KW_RE.search(body)
+            if not rm or not about_controller(body, rm, in_sub):
+                info = {"reserved": None, "reserved_approx": False, "reserved_phrase": None, "estimate": None}
+        if not m and not info["reserved"]:
+            continue
+        reports.append({
+            "id": f"reddit-{rid}", "source": "reddit", "date": iso(ts),
+            "status": "got" if m else "waiting",
+            "text": snippet(body, m or RES_KW_RE.search(body)),
+            **info,
+            "eu": eu_terms(body),
+            "thread": f"r/{sub}" + (f" · {title}" if title else ""),
+            "url": url,
+        })
+    return {"via": via, "latest": iso(latest) if latest else None,
+            "threads": sorted(threads.values(), key=lambda t: t["last_post"], reverse=True)[:20],
+            "reports": reports}
 
 
 # ---------------------------------------------------------------- unione con lo storico
@@ -491,6 +641,18 @@ def main():
         }
     else:
         status["forum"] = prev.get("forum", {"threads": [], "reports": []})
+
+    reddit = section("reddit", lambda: collect_reddit(errors))
+    old_r = prev.get("reddit", {})
+    if reddit is not None:
+        status["reddit"] = {
+            "via": reddit["via"],
+            "latest": reddit["latest"],
+            "threads": merge(old_r.get("threads"), "last_post", reddit["threads"], keep_old=False),
+            "reports": merge(old_r.get("reports"), "date", reddit["reports"]),
+        }
+    else:
+        status["reddit"] = old_r or {"threads": [], "reports": []}
 
     status["events"] = sorted(events, key=lambda e: e["date"], reverse=True)[:30]
     status["errors"] = errors
