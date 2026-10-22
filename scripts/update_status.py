@@ -198,8 +198,12 @@ NEGATION_RE = re.compile(
 def got_email(text):
     """Prima frase "ho ricevuto la mail" non negata ("haven't gotten an email" non conta)."""
     for m in EMAIL_GOT_RE.finditer(text):
-        if not NEGATION_RE.search(text[max(0, m.start() - 40): m.start()]):
-            return m
+        if NEGATION_RE.search(text[max(0, m.start() - 40): m.start()]):
+            continue
+        # la mail che conferma la prenotazione non è la mail di acquisto
+        if re.match(r"\W*(confirming|that\s+confirm|confirming\s+(my|the)\s+reserv|for\s+(my|the)\s+reserv)", text[m.end(): m.end() + 30], re.I):
+            continue
+        return m
     return None
 
 
@@ -444,7 +448,7 @@ CONTROLLER_RE = re.compile(r"\bcontroller\b", re.I)
 # (il Controller non ha waitlist), quindi le loro mail non contano.
 OTHER_PRODUCT_RE = re.compile(
     r"\b(machine|frame|gabe\s?cube|deck|index|bundle|512|2\s?tb|1\s?tb|wait\s?-?list\w*|sku)\b"
-    r"|\b(with|w/|w|without|w/o|no)\s+(a\s+)?controller\b", re.I)
+    r"|\b(with|w/|w|without|w/o|no)\s+(a\s+|the\s+)?controller\b|\bbase\s+model\b", re.I)
 EXPLICIT_RE = re.compile(r"steam\s+controller|controller\s+(queue|reservation|e-?mail|purchase)|my\s+controller|the\s+controller", re.I)
 
 
