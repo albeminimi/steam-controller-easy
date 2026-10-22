@@ -83,7 +83,7 @@ EU_RE = re.compile(
 
 # Frasi del tipo "ho ricevuto la mail per acquistare".
 EMAIL_GOT_RE = re.compile(
-    r"(got|received|recieved|gotten|had)\s+(?:[\w-]+\s+){0,3}?(e-?mail|invite|invitation)"
+    r"(got|received|recieved|gotten|had)\s+(?:[\w-]+\s+){0,4}?(e-?mail|invite|invitation)"
     r"|(got|received|recieved)\s+(mine|my\s+controller|the\s+controller|my\s+purchase|it\s+(today|yesterday|this\s+week))\b"
     r"|(got|received|recieved)\s+it\s+(sometime|in\s+(late|early|mid)|last\s+\w+|a\s+(few|couple))"
     r"|(e-?mail|invite)\s+(came|arrived|showed up|just came|finally came)"
@@ -134,7 +134,7 @@ RES_OPEN = dt.date(2026, 5, 8)
 OTHER_EVENT_RE = re.compile(r"\b(got|received|recieved|e-?mail|mail|bought|paid|purchased|arrived|shipped|delivered|ricevut\w*|arrivat\w*|spedit\w*)\b", re.I)
 
 
-def reservation_info(text, post_ts):
+def reservation_info(text, post_ts, accept=None):
     """Cerca nel testo la data di prenotazione (vicino a parole come "reserved") e la stima Valve."""
     posted = dt.datetime.fromtimestamp(post_ts, dt.timezone.utc).date()
     out = {"reserved": None, "reserved_approx": False, "reserved_phrase": None, "estimate": None}
@@ -151,6 +151,8 @@ def reservation_info(text, post_ts):
         ok_before = res_b and (not oth_b or max(res_b) > max(oth_b))
         ok_after = res_a and not oth_a and not (oth_b and (not res_b or max(oth_b) > max(res_b)))
         if not (ok_before or ok_after):
+            continue
+        if accept and not accept(m):
             continue
         if m.group("day1"):
             day, approx = RES_OPEN, False
@@ -177,6 +179,7 @@ def reservation_info(text, post_ts):
             if day is None:
                 continue
         out.update(reserved=day.isoformat(), reserved_approx=approx, reserved_phrase=m.group(0).strip())
+        out["_match"] = m
         break
     e = ESTIMATE_RE.search(text)
     if e:
@@ -412,6 +415,7 @@ def collect_forum(errors):
                 continue
             m = got_email(c["text"])
             info = reservation_info(c["text"], c["ts"])
+            info.pop("_match", None)
             # Teniamo chi ha ricevuto la mail, e chi aspetta ancora ma dice da quando.
             if not m and not info["reserved"]:
                 continue
@@ -445,11 +449,22 @@ EXPLICIT_RE = re.compile(r"steam\s+controller|controller\s+(queue|reservation|e-
 
 
 def about_controller(text, m, in_controller_sub):
-    """La frase trovata parla del Controller e non di Steam Machine/Frame?"""
-    window = text[max(0, m.start() - 90): m.end() + 90]
-    if OTHER_PRODUCT_RE.search(window):
-        return False
-    return in_controller_sub or bool(EXPLICIT_RE.search(window))
+    """La frase trovata parla del Controller e non di Steam Machine/Frame?
+
+    Vince la menzione più vicina: in "reserved the Frame in September. I also reserved
+    the Steam Controller on 9th of May" il 9 maggio è del Controller.
+    """
+    lo = max(0, m.start() - 90)
+    window = text[lo: m.end() + 90]
+    centre = (m.start() + m.end()) / 2 - lo
+
+    def nearest(rx):
+        return min((abs((x.start() + x.end()) / 2 - centre) for x in rx.finditer(window)), default=None)
+
+    other, ctrl = nearest(OTHER_PRODUCT_RE), nearest(EXPLICIT_RE)
+    if other is None:
+        return in_controller_sub or ctrl is not None
+    return ctrl is not None and ctrl < other
 
 
 def _reddit_json(url, wait=6):
@@ -539,11 +554,8 @@ def collect_reddit(errors):
         m = got_email(body)
         if m and not about_controller(body, m, in_sub):
             m = None
-        info = reservation_info(body, ts)
-        if info["reserved"]:
-            rm = RES_KW_RE.search(body)
-            if not rm or not about_controller(body, rm, in_sub):
-                info = {"reserved": None, "reserved_approx": False, "reserved_phrase": None, "estimate": None}
+        info = reservation_info(body, ts, accept=lambda dm: about_controller(body, dm, in_sub))
+        info.pop("_match", None)
         if not m and not info["reserved"]:
             continue
         reports.append({
@@ -649,7 +661,8 @@ def main():
             "via": reddit["via"],
             "latest": reddit["latest"],
             "threads": merge(old_r.get("threads"), "last_post", reddit["threads"], keep_old=False),
-            "reports": merge(old_r.get("reports"), "date", reddit["reports"]),
+            # PullPush copre tutti i 60 giorni a ogni giro: niente vecchie voci da conservare.
+            "reports": merge(old_r.get("reports"), "date", reddit["reports"], keep_old=False),
         }
     else:
         status["reddit"] = old_r or {"threads": [], "reports": []}
