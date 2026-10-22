@@ -1,0 +1,669 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Coda Steam Controller</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Stato della coda di prenotazione dello Steam Controller in Europa: annunci Valve, store e segnalazioni di mail di acquisto.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+/* Layout: etichetta di spedizione in testa, poi riepilogo a tessere, poi due colonne
+   (la tua prenotazione + cronologia | segnali dal mondo), una colonna su telefono. */
+:root {
+  --paper: #edf0f4;
+  --card: #ffffff;
+  --ink: #142131;
+  --muted: #5a6878;
+  --line: #d3dae2;
+  --accent: #2d5bd8;
+  --accent-soft: #e3eafc;
+  --ok: #1f7a52;
+  --ok-soft: #dcf1e6;
+  --warn: #9a6512;
+  --warn-soft: #f8ecd2;
+  --bad: #b93a0b;
+  --bad-soft: #fbe2d7;
+  --font-display: "Barlow Condensed", "Arial Narrow", "Roboto Condensed", sans-serif;
+  --font-body: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  --radius: 10px;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #0e151e; --card: #16202c; --ink: #e5eaf0; --muted: #93a1b1; --line: #2a3646;
+    --accent: #86a8ff; --accent-soft: #1d2a47; --ok: #59c995; --ok-soft: #143428;
+    --warn: #e6b553; --warn-soft: #3a2d12; --bad: #f4875f; --bad-soft: #3d2016;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #0e151e; --card: #16202c; --ink: #e5eaf0; --muted: #93a1b1; --line: #2a3646;
+  --accent: #86a8ff; --accent-soft: #1d2a47; --ok: #59c995; --ok-soft: #143428;
+  --warn: #e6b553; --warn-soft: #3a2d12; --bad: #f4875f; --bad-soft: #3d2016;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font: 15px/1.55 var(--font-body);
+}
+a { color: var(--accent); text-underline-offset: 2px; }
+a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, label:focus-within {
+  outline: 2px solid var(--accent); outline-offset: 2px;
+}
+.wrap {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 20px 48px;
+  display: grid;
+  gap: 20px;
+}
+
+/* intestazione a etichetta */
+.label {
+  display: grid;
+  gap: 10px;
+  padding-block: 4px 16px;
+  border-bottom: 2px dashed var(--line);
+}
+.label-meta {
+  display: flex; flex-wrap: wrap; gap: 6px 14px;
+  font: 500 12px/1.4 var(--font-mono);
+  letter-spacing: .06em; text-transform: uppercase; color: var(--muted);
+}
+.label-meta b { color: var(--ink); font-weight: 500; }
+h1 {
+  margin: 0;
+  font: 700 clamp(34px, 6vw, 56px)/0.95 var(--font-display);
+  letter-spacing: .005em;
+  text-transform: uppercase;
+  text-wrap: balance;
+}
+.lede { margin: 0; max-width: 62ch; color: var(--muted); }
+.freshness { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+
+.pill {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 3px 10px; border-radius: 999px;
+  font: 500 12px/1.5 var(--font-mono); letter-spacing: .03em;
+  background: var(--accent-soft); color: var(--ink);
+  white-space: nowrap;
+}
+.pill::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--accent); }
+.pill.ok { background: var(--ok-soft); } .pill.ok::before { background: var(--ok); }
+.pill.warn { background: var(--warn-soft); } .pill.warn::before { background: var(--warn); }
+.pill.bad { background: var(--bad-soft); } .pill.bad::before { background: var(--bad); }
+.pill.plain::before { display: none; }
+
+/* tessere di riepilogo */
+.tiles { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+@media (max-width: 900px) { .tiles { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.tile {
+  background: var(--card); border: 1px solid var(--line); border-radius: var(--radius);
+  padding: 14px 16px; display: grid; gap: 4px; align-content: start; min-width: 0;
+  border-top: 4px solid var(--line);
+}
+.tile.ok { border-top-color: var(--ok); }
+.tile.warn { border-top-color: var(--warn); }
+.tile.bad { border-top-color: var(--bad); }
+.tile.info { border-top-color: var(--accent); }
+.tile-k { font: 500 11px/1.3 var(--font-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.tile-v { font: 700 28px/1.1 var(--font-display); font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
+.tile-s { font-size: 13px; color: var(--muted); }
+
+/* colonne */
+.cols { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: 20px; align-items: start; }
+@media (max-width: 900px) { .cols { grid-template-columns: minmax(0, 1fr); } }
+.col { display: grid; gap: 20px; min-width: 0; }
+
+section.box {
+  background: var(--card); border: 1px solid var(--line); border-radius: var(--radius);
+  padding: 18px 18px 20px; display: grid; gap: 14px; min-width: 0;
+}
+h2 {
+  margin: 0; font: 700 22px/1.1 var(--font-display); letter-spacing: .02em; text-transform: uppercase;
+  display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 6px 12px;
+}
+h2 small { font: 500 12px/1.4 var(--font-mono); letter-spacing: .04em; text-transform: none; color: var(--muted); }
+.note { margin: 0; font-size: 13px; color: var(--muted); }
+
+/* la tua prenotazione */
+.ticket { display: grid; gap: 14px; }
+.verdict {
+  border-radius: 8px; padding: 12px 14px; background: var(--accent-soft);
+  display: grid; gap: 4px;
+}
+.verdict.ok { background: var(--ok-soft); }
+.verdict.warn { background: var(--warn-soft); }
+.verdict.bad { background: var(--bad-soft); }
+.verdict strong { font: 700 20px/1.15 var(--font-display); letter-spacing: .02em; text-transform: uppercase; }
+.verdict p { margin: 0; font-size: 14px; }
+.countdown { font: 500 30px/1.1 var(--font-mono); font-variant-numeric: tabular-nums; }
+.fields { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+@media (max-width: 480px) { .fields { grid-template-columns: minmax(0, 1fr); } }
+.field { display: grid; gap: 4px; min-width: 0; }
+.field label, .field .lbl { font: 500 11px/1.3 var(--font-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+input, select {
+  font: inherit; color: var(--ink); background: var(--paper);
+  border: 1px solid var(--line); border-radius: 6px; padding: 8px 10px; width: 100%; min-width: 0;
+}
+.check { display: flex; gap: 8px; align-items: center; font-size: 14px; cursor: pointer; }
+.check input { width: 18px; height: 18px; accent-color: var(--accent); }
+.actions { display: flex; flex-wrap: wrap; gap: 8px; }
+.btn {
+  display: inline-flex; align-items: center; gap: 6px; text-decoration: none; cursor: pointer;
+  padding: 9px 14px; border-radius: 8px; border: 1px solid var(--accent);
+  font: 600 14px/1.2 var(--font-body); color: var(--accent); background: transparent;
+}
+.btn.primary { background: var(--accent); color: var(--card); }
+.btn:hover { filter: brightness(1.08); }
+.copyline { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+code {
+  font: 13px/1.4 var(--font-mono); background: var(--paper); border: 1px solid var(--line);
+  padding: 3px 7px; border-radius: 5px; overflow-wrap: anywhere;
+}
+.linkbtn { background: none; border: 0; padding: 0; font: 600 13px var(--font-body); color: var(--accent); cursor: pointer; }
+
+/* cronologia */
+.timeline { list-style: none; margin: 0; padding: 0; display: grid; }
+.timeline li {
+  display: grid; grid-template-columns: 88px 18px minmax(0, 1fr); gap: 0 10px; align-items: start;
+  position: relative; padding-bottom: 12px;
+}
+.timeline .when { font: 500 12px/1.5 var(--font-mono); color: var(--muted); text-align: right; padding-top: 1px; font-variant-numeric: tabular-nums; }
+.timeline .dot { position: relative; height: 100%; }
+.timeline .dot::before {
+  content: ""; position: absolute; left: 4px; top: 5px; width: 10px; height: 10px; border-radius: 50%;
+  background: var(--card); border: 2px solid var(--muted);
+}
+.timeline .dot::after {
+  content: ""; position: absolute; left: 8px; top: 19px; bottom: -12px; width: 2px; background: var(--line);
+}
+.timeline li:last-child .dot::after { display: none; }
+.timeline li.past .dot::before { background: var(--muted); }
+.timeline li.today .dot::before { background: var(--accent); border-color: var(--accent); box-shadow: 0 0 0 4px var(--accent-soft); }
+.timeline li.today .what { font-weight: 600; color: var(--accent); }
+.timeline li.mine .dot::before { border-color: var(--warn); background: var(--warn-soft); }
+.timeline .what { font-size: 14px; }
+.timeline .what span { display: block; font-size: 12.5px; color: var(--muted); }
+
+/* elenchi di segnali */
+.feed { list-style: none; margin: 0; padding: 0; display: grid; }
+.feed li { padding: 11px 0; border-top: 1px solid var(--line); display: grid; gap: 4px; min-width: 0; }
+.feed li:first-child { border-top: 0; padding-top: 0; }
+.feed .row { display: flex; flex-wrap: wrap; gap: 6px 10px; align-items: center; font: 12px/1.4 var(--font-mono); color: var(--muted); }
+.feed .title { font-weight: 600; font-size: 14.5px; overflow-wrap: anywhere; }
+.feed .title a { color: var(--ink); text-decoration: none; }
+.feed .title a:hover { text-decoration: underline; }
+.feed blockquote { margin: 0; font-size: 14px; color: var(--ink); overflow-wrap: anywhere; }
+.feed .muted { opacity: .62; }
+.tag { font: 500 11px/1.5 var(--font-mono); letter-spacing: .05em; text-transform: uppercase; padding: 1px 7px; border-radius: 4px; background: var(--paper); border: 1px solid var(--line); color: var(--muted); }
+.tag.eu { background: var(--accent-soft); border-color: transparent; color: var(--accent); }
+.tag.hot { background: var(--warn-soft); border-color: transparent; color: var(--warn); }
+.tag.new { background: var(--ok-soft); border-color: transparent; color: var(--ok); }
+.empty { padding: 12px; border: 1px dashed var(--line); border-radius: 8px; color: var(--muted); font-size: 14px; }
+.toolbar { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.seg { display: inline-flex; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }
+.seg button { font: 500 13px var(--font-body); padding: 6px 12px; background: transparent; color: var(--muted); border: 0; cursor: pointer; }
+.seg button[aria-pressed="true"] { background: var(--accent-soft); color: var(--ink); }
+
+/* cosa sappiamo */
+.facts { display: grid; gap: 12px; }
+.facts h3 { margin: 0 0 4px; font: 500 11px/1.3 var(--font-mono); letter-spacing: .08em; text-transform: uppercase; }
+.facts ul { margin: 0; padding-left: 18px; display: grid; gap: 4px; font-size: 14px; }
+.facts .src { color: var(--muted); font-size: 12.5px; }
+.facts .g-ok h3 { color: var(--ok); } .facts .g-warn h3 { color: var(--warn); } .facts .g-bad h3 { color: var(--bad); }
+
+footer { font-size: 13px; color: var(--muted); display: grid; gap: 6px; border-top: 2px dashed var(--line); padding-top: 16px; }
+footer p { margin: 0; max-width: 75ch; }
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="label">
+    <div class="label-meta">
+      <span>Articolo <b>Steam Controller</b></span>
+      <span>App <b>4165870</b></span>
+      <span>Zona <b>Europa</b></span>
+    </div>
+    <h1>A che punto è la coda?</h1>
+    <p class="lede">Annunci Valve, stato dello store e segnalazioni di chi ha ricevuto la mail di acquisto, raccolti in automatico ogni 3 ore. La tua posizione nella coda la vede solo Valve: qui trovi i segnali pubblici e un promemoria per la tua prenotazione.</p>
+    <div class="freshness" id="freshness"><span class="pill plain">Caricamento dati…</span></div>
+  </header>
+
+  <div class="tiles" id="tiles"></div>
+
+  <div class="cols">
+    <div class="col">
+      <section class="box" aria-labelledby="h-mine">
+        <h2 id="h-mine">La tua prenotazione <small>salvata solo su questo dispositivo</small></h2>
+        <div class="ticket">
+          <div class="verdict" id="verdict"></div>
+          <div class="fields">
+            <div class="field">
+              <label for="f-window">Finestra mostrata da Steam</label>
+              <select id="f-window">
+                <option value="2026-09">Entro settembre 2026</option>
+                <option value="2026-12">Entro dicembre 2026</option>
+                <option value="2027" selected>Nel 2027</option>
+                <option value="">Non lo so</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="f-reserved">Data della prenotazione</label>
+              <input type="date" id="f-reserved" min="2026-05-08">
+            </div>
+            <div class="field" style="grid-column: 1 / -1">
+              <label class="check" for="f-got"><input type="checkbox" id="f-got"> Ho ricevuto la mail con l'opzione di acquisto</label>
+            </div>
+            <div class="field" id="got-when" hidden>
+              <label for="f-gotat">Quando è arrivata</label>
+              <input type="datetime-local" id="f-gotat">
+            </div>
+            <div class="field" id="bought-wrap" hidden>
+              <span class="lbl">Acquisto</span>
+              <label class="check" for="f-bought"><input type="checkbox" id="f-bought"> Ho completato l'ordine</label>
+            </div>
+          </div>
+          <div class="actions">
+            <a class="btn primary" href="https://store.steampowered.com/hardware/steamcontroller" target="_blank" rel="noopener">Vedi la tua finestra su Steam</a>
+            <a class="btn" id="gmail" href="https://mail.google.com/mail/u/0/#search/from%3Asteampowered.com+%22Steam+Controller%22" target="_blank" rel="noopener">Cerca la mail in Gmail</a>
+          </div>
+          <div class="copyline">
+            <span class="note">Ricerca per qualsiasi client di posta:</span>
+            <code id="q">from:steampowered.com "Steam Controller"</code>
+            <button class="linkbtn" id="copy" type="button">Copia</button>
+          </div>
+          <p class="note">La finestra esatta la vedi solo sulla pagina Steam, da loggato. Controlla anche lo spam: la mail arriva da Steam, non come notifica nel client.</p>
+        </div>
+      </section>
+
+      <section class="box" aria-labelledby="h-time">
+        <h2 id="h-time">Cronologia <small>fonti: annunci Valve, forum</small></h2>
+        <ol class="timeline" id="timeline"></ol>
+      </section>
+    </div>
+
+    <div class="col">
+      <section class="box" aria-labelledby="h-reports">
+        <h2 id="h-reports">Mail e acquisti segnalati <small id="reports-count"></small></h2>
+        <div class="toolbar">
+          <div class="seg" role="group" aria-label="Filtro zona">
+            <button type="button" data-filter="all" aria-pressed="true">Tutte</button>
+            <button type="button" data-filter="eu" aria-pressed="false">Solo Europa</button>
+          </div>
+          <span class="note">Messaggi del forum Steam di chi dice di aver ricevuto la mail o di aver già comprato.</span>
+        </div>
+        <ul class="feed" id="reports"></ul>
+      </section>
+
+      <section class="box" aria-labelledby="h-threads">
+        <h2 id="h-threads">Discussioni su coda e spedizioni <small>forum Steam Controller</small></h2>
+        <ul class="feed" id="threads"></ul>
+      </section>
+
+      <section class="box" aria-labelledby="h-official">
+        <h2 id="h-official">Annunci Valve <small>su Controller e prenotazioni</small></h2>
+        <ul class="feed" id="official"></ul>
+      </section>
+    </div>
+  </div>
+
+  <section class="box" aria-labelledby="h-facts">
+    <h2 id="h-facts">Cosa sappiamo, e cosa no</h2>
+    <div class="facts">
+      <div class="g-ok">
+        <h3>Confermato da Valve per lo Steam Controller</h3>
+        <ul>
+          <li>Ci sono tre finestre stimate per la mail di acquisto: entro settembre 2026, entro dicembre 2026, nel 2027. <span class="src">Annuncio del 18 giugno 2026</span></li>
+          <li>Per il 2027 Valve ha promesso «ulteriori informazioni sui tempi», senza date. <span class="src">18 giugno 2026</span></li>
+          <li>Dalla mail hai 72 ore per completare l'ordine. Dopo, Valve passa al prossimo in coda e ti toglie dalla lista. <span class="src">18 giugno 2026</span></li>
+          <li>Le prenotazioni restano aperte; chi prenota da giugno in poi è stimato nel 2027. <span class="src">18 giugno 2026</span></li>
+        </ul>
+      </div>
+      <div class="g-warn">
+        <h3>Confermato per Steam Machine e Steam Frame, non (ancora) per il Controller</h3>
+        <ul>
+          <li>Le code sono separate per prodotto e per regione, e avanzano a velocità diverse. <span class="src">Annunci del 28 luglio e 9 ottobre 2026</span></li>
+          <li>Per Steam Frame, chi è nella finestra 2027 riceverà tempi più precisi entro gennaio. Per il Controller non c'è una data simile. <span class="src">9 ottobre 2026</span></li>
+        </ul>
+      </div>
+      <div class="g-warn">
+        <h3>Riportato da utenti, non verificato</h3>
+        <ul>
+          <li>Alcuni con stima 2027 hanno ricevuto la mail molto prima (un utente ad agosto). Le stime di Valve sembrano prudenti. <span class="src">Forum Steam, settembre 2026</span></li>
+          <li>L'ordine non è strettamente cronologico: chi ha prenotato quasi insieme riceve la mail in giorni diversi. <span class="src">Stampa e forum, maggio–giugno 2026</span></li>
+          <li>In UE le spedizioni passano anche da GLS, con lamentele per i ritardi. <span class="src">Forum Steam, agosto 2026</span></li>
+        </ul>
+      </div>
+      <div class="g-bad">
+        <h3>Non pubblico</h3>
+        <ul>
+          <li>La tua posizione in coda e quante mail Valve ha inviato in Europa. Nessun sito può mostrarle: chi promette di farlo sta stimando.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>Dati raccolti da una GitHub Action ogni 3 ore dal feed RSS degli annunci hardware Valve, dall'API dello Steam Store (prezzi in IT, DE, FR, ES, NL, GB) e dal forum "General Discussions" dello Steam Controller. Le segnalazioni sono riconosciute in automatico da frasi come "got my email": possono esserci falsi positivi e mancare messaggi che non citano il paese.</p>
+    <p>Sito non ufficiale, non affiliato a Valve. <a href="https://github.com/albeminimi/steam-controller-easy">Codice e storico dati su GitHub</a>.</p>
+  </footer>
+</div>
+
+<script>
+(function () {
+  "use strict";
+  var RAW = "https://raw.githubusercontent.com/albeminimi/steam-controller-easy/main/data/status.json";
+  var STORE_KEY = "scq-mine-v1";
+  var DAY = 86400000;
+  var $ = function (id) { return document.getElementById(id); };
+  var fmtDate = new Intl.DateTimeFormat("it-IT", { day: "numeric", month: "short", year: "numeric" });
+  var fmtShort = new Intl.DateTimeFormat("it-IT", { day: "numeric", month: "short" });
+  var fmtTime = new Intl.DateTimeFormat("it-IT", { day: "numeric", month: "short", hour: "2-digit", minute: "2-digit" });
+  var fmtLong = new Intl.DateTimeFormat("it-IT", { weekday: "long", day: "numeric", month: "long", hour: "2-digit", minute: "2-digit" });
+
+  function esc(s) {
+    return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) {
+      return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+    });
+  }
+  function safeUrl(u) { return /^https:\/\//.test(u || "") ? u : "#"; }
+  function ago(iso) {
+    var d = Math.floor((Date.now() - new Date(iso).getTime()) / DAY);
+    if (d <= 0) {
+      var h = Math.floor((Date.now() - new Date(iso).getTime()) / 3600000);
+      return h <= 0 ? "meno di un'ora fa" : h === 1 ? "1 ora fa" : h + " ore fa";
+    }
+    return d === 1 ? "ieri" : d + " giorni fa";
+  }
+  function within(iso, days) { return iso && Date.now() - new Date(iso).getTime() <= days * DAY; }
+
+  // ------------------------------------------------------------ dati
+  function load() {
+    var urls = ["data/status.json?t=" + Date.now()];
+    if (!/github\.io$/.test(location.hostname)) urls.push(RAW + "?t=" + Date.now());
+    var i = 0;
+    function next() {
+      if (i >= urls.length) return Promise.reject(new Error("nessuna fonte raggiungibile"));
+      return fetch(urls[i++], { cache: "no-store" })
+        .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
+        .catch(next);
+    }
+    return next();
+  }
+
+  var STATE = { data: null, filter: "all" };
+
+  function render(data) {
+    STATE.data = data;
+    renderFreshness(data);
+    renderTiles(data);
+    renderReports();
+    renderThreads(data);
+    renderOfficial(data);
+    renderTimeline();
+  }
+
+  function renderFreshness(d) {
+    var gen = d.generated_at;
+    var age = (Date.now() - new Date(gen).getTime()) / 3600000;
+    var cls = age < 7 ? "ok" : age < 24 ? "warn" : "bad";
+    var html = '<span class="pill ' + cls + '">Aggiornato ' + esc(fmtTime.format(new Date(gen))) + " · " + esc(ago(gen)) + "</span>";
+    var names = { official: "Annunci Valve", store: "Store", forum: "Forum" };
+    Object.keys(names).forEach(function (k) {
+      var s = (d.sources || {})[k];
+      if (s && !s.ok) html += '<span class="pill bad">' + names[k] + " non raggiungibile</span>";
+    });
+    if (age >= 24) html += '<span class="pill plain">I dati non si aggiornano da più di un giorno: controlla la GitHub Action</span>';
+    $("freshness").innerHTML = html;
+  }
+
+  function lastControllerQueuePost(d) {
+    // Solo annunci dedicati al Controller: quelli su Machine e Frame lo citano solo di passaggio.
+    return (d.official || []).filter(function (p) { return /steam controller/i.test(p.title) && p.reservations; })[0];
+  }
+
+  function renderTiles(d) {
+    var store = d.store || {};
+    var it = (store.countries || {}).it || {};
+    var reports = (d.forum && d.forum.reports) || [];
+    var r30 = reports.filter(function (r) { return within(r.date, 30); });
+    var r30eu = r30.filter(function (r) { return r.eu && r.eu.length; });
+    var post = lastControllerQueuePost(d);
+    var postNew = post && post.date > "2026-06-19";
+    var tiles = [
+      {
+        cls: store.reservation_queue === false ? "ok" : "warn",
+        k: "Modalità di vendita",
+        v: store.reservation_queue === false ? "Acquisto diretto?" : "Solo coda",
+        s: store.reservation_queue === false ? "Lo store non mostra più il modulo di prenotazione. Verifica sulla pagina." : "Lo store mostra ancora il modulo di prenotazione."
+      },
+      {
+        cls: postNew ? "ok" : "info",
+        k: "Ultimo aggiornamento Valve sulla coda",
+        v: post ? fmtShort.format(new Date(post.date)) : "—",
+        s: post ? (postNew ? "Nuovo annuncio: leggilo sotto." : ago(post.date) + ". Nessuna novità sulle date 2027.") : "Nessun annuncio trovato nel feed."
+      },
+      {
+        cls: r30.length ? "ok" : "warn",
+        k: "Mail o acquisti segnalati, 30 giorni",
+        v: String(r30.length),
+        s: r30eu.length + " con riferimenti all'Europa. Le mail continuano a partire se il numero non è 0."
+      },
+      {
+        cls: "info",
+        k: "Prezzo in Italia",
+        v: it.cents ? (it.cents / 100).toLocaleString("it-IT", { style: "currency", currency: it.currency || "EUR" }) : "—",
+        s: "Stesso prezzo in DE, FR, ES, NL" + (((store.countries || {}).gb || {}).price ? "; UK " + esc(store.countries.gb.price) : "") + "."
+      }
+    ];
+    $("tiles").innerHTML = tiles.map(function (t) {
+      return '<div class="tile ' + t.cls + '"><span class="tile-k">' + esc(t.k) + '</span><span class="tile-v">' + esc(t.v) + '</span><span class="tile-s">' + t.s + "</span></div>";
+    }).join("");
+  }
+
+  function euTag(list) {
+    return list && list.length ? '<span class="tag eu" title="' + esc(list.join(", ")) + '">Europa · ' + esc(list.slice(0, 2).join(", ")) + "</span>" : "";
+  }
+
+  function renderReports() {
+    var d = STATE.data; if (!d) return;
+    var all = ((d.forum && d.forum.reports) || []).slice().sort(function (a, b) { return a.date < b.date ? 1 : -1; });
+    var list = STATE.filter === "eu" ? all.filter(function (r) { return r.eu && r.eu.length; }) : all;
+    $("reports-count").textContent = list.length + " negli ultimi 60 giorni";
+    if (!list.length) {
+      $("reports").innerHTML = '<li class="empty">' + (STATE.filter === "eu"
+        ? "Nessuna segnalazione con riferimenti espliciti all'Europa. La maggior parte degli utenti non scrive da dove posta, quindi guarda anche \"Tutte\"."
+        : "Nessuna segnalazione negli ultimi 60 giorni.") + "</li>";
+      return;
+    }
+    $("reports").innerHTML = list.slice(0, 15).map(function (r) {
+      var fresh = within(r.date, 2) ? '<span class="tag new">Nuova</span>' : "";
+      return "<li><div class=\"row\"><span>" + esc(fmtDate.format(new Date(r.date))) + "</span>" + euTag(r.eu) + fresh +
+        '</div><blockquote>«' + esc(r.text) + '»</blockquote><div class="row"><a href="' + esc(safeUrl(r.url)) + '" target="_blank" rel="noopener">' + esc(r.thread) + "</a></div></li>";
+    }).join("");
+  }
+
+  function renderThreads(d) {
+    var list = (d.forum && d.forum.threads) || [];
+    if (!list.length) { $("threads").innerHTML = '<li class="empty">Nessuna discussione recente su coda o spedizioni.</li>'; return; }
+    $("threads").innerHTML = list.slice(0, 12).map(function (t) {
+      var hot = within(t.last_post, 3) ? '<span class="tag hot">Attiva</span>' : "";
+      return '<li><div class="title"><a href="' + esc(safeUrl(t.url)) + '" target="_blank" rel="noopener">' + esc(t.title) + "</a></div>" +
+        '<div class="row"><span>Ultimo post ' + esc(ago(t.last_post)) + "</span><span>" + t.replies + " risposte</span>" + euTag(t.eu) + hot + "</div>" +
+        (t.preview ? '<div class="note">' + esc(t.preview) + "</div>" : "") + "</li>";
+    }).join("");
+  }
+
+  function renderOfficial(d) {
+    var list = (d.official || []).filter(function (p) { return p.controller || p.reservations; }).slice(0, 8);
+    if (!list.length) { $("official").innerHTML = '<li class="empty">Feed degli annunci non disponibile.</li>'; return; }
+    $("official").innerHTML = list.map(function (p) {
+      var tags = (p.controller ? '<span class="tag eu">Controller</span>' : '<span class="tag">Altro hardware</span>') +
+        (p.reservations ? '<span class="tag hot">Prenotazioni</span>' : "");
+      var dim = !p.controller && !p.reservations ? " muted" : "";
+      return '<li class="' + dim + '"><div class="row"><span>' + esc(fmtDate.format(new Date(p.date))) + "</span>" + tags + "</div>" +
+        '<div class="title"><a href="' + esc(safeUrl(p.url)) + '" target="_blank" rel="noopener">' + esc(p.title) + "</a></div>" +
+        (p.controller || p.reservations ? '<div class="note">' + esc(p.summary) + "</div>" : "") + "</li>";
+    }).join("");
+  }
+
+  // ------------------------------------------------------------ prenotazione personale
+  function readMine() {
+    try { return JSON.parse(localStorage.getItem(STORE_KEY)) || {}; } catch (e) { return {}; }
+  }
+  function saveMine(m) {
+    try { localStorage.setItem(STORE_KEY, JSON.stringify(m)); } catch (e) { /* storage non disponibile */ }
+  }
+  var mine = readMine();
+  if (mine.window === undefined) mine.window = "2027";
+
+  function syncForm() {
+    $("f-window").value = mine.window || "";
+    $("f-reserved").value = mine.reserved || "";
+    $("f-got").checked = !!mine.got;
+    $("f-gotat").value = mine.gotAt || "";
+    $("f-bought").checked = !!mine.bought;
+    $("got-when").hidden = !mine.got;
+    $("bought-wrap").hidden = !mine.got;
+  }
+
+  function windowEnd(w) {
+    if (w === "2026-09") return new Date(2026, 9, 1);
+    if (w === "2026-12") return new Date(2027, 0, 1);
+    if (w === "2027") return new Date(2028, 0, 1);
+    return null;
+  }
+
+  function renderVerdict() {
+    var v = $("verdict");
+    var html, cls;
+    if (mine.got && mine.bought) {
+      cls = "ok";
+      html = "<strong>Ordine completato</strong><p>Da qui in poi conta il tracciamento del corriere nella mail di spedizione di Steam e nella pagina \"Dettagli acquisto\" del tuo account.</p>";
+    } else if (mine.got && mine.gotAt) {
+      var deadline = new Date(new Date(mine.gotAt).getTime() + 72 * 3600000);
+      var left = deadline.getTime() - Date.now();
+      if (left > 0) {
+        var h = Math.floor(left / 3600000), mnt = Math.floor((left % 3600000) / 60000);
+        cls = left < 12 * 3600000 ? "bad" : "warn";
+        html = "<strong>Hai tempo fino a " + esc(fmtLong.format(deadline)) + '</strong><span class="countdown">' + h + " h " + String(mnt).padStart(2, "0") + " min</span><p>Completa l'acquisto dal link nella mail. Scaduto il tempo, Valve passa al prossimo in coda.</p>";
+      } else {
+        cls = "bad";
+        html = "<strong>Le 72 ore sono scadute</strong><p>Se non hai completato l'ordine, controlla la pagina Steam: probabilmente devi prenotare di nuovo, in fondo alla coda. Se il pagamento è fallito, scrivi al supporto Steam.</p>";
+      }
+    } else if (mine.got) {
+      cls = "warn";
+      html = "<strong>Mail ricevuta</strong><p>Inserisci quando è arrivata per vedere la scadenza delle 72 ore.</p>";
+    } else {
+      var end = windowEnd(mine.window);
+      var since = mine.reserved ? Math.floor((Date.now() - new Date(mine.reserved).getTime()) / DAY) : null;
+      var sinceTxt = since != null && since >= 0 ? "Prenotato da " + since + " giorni. " : "";
+      if (mine.window === "2027") {
+        cls = "info";
+        html = "<strong>In attesa · finestra 2027</strong><p>" + sinceTxt + "Valve non ha ancora dato date più precise per il 2027. Alcuni utenti con questa stima hanno ricevuto la mail mesi prima: controlla la posta almeno ogni due giorni, perché hai solo 72 ore.</p>";
+      } else if (end && Date.now() > end.getTime()) {
+        cls = "bad";
+        html = "<strong>La tua finestra è passata</strong><p>" + sinceTxt + "Se non hai ricevuto la mail, cerca nello spam e controlla la pagina Steam: la stima potrebbe essere cambiata. Se la pagina non mostra più la prenotazione, contatta il supporto Steam.</p>";
+      } else if (end) {
+        cls = "info";
+        var days = Math.ceil((end.getTime() - Date.now()) / DAY);
+        html = "<strong>In attesa · entro " + esc(fmtDate.format(new Date(end.getTime() - DAY))) + "</strong><p>" + sinceTxt + "Mancano al massimo " + days + " giorni alla fine della tua finestra. Controlla la posta almeno ogni due giorni.</p>";
+      } else {
+        cls = "info";
+        html = "<strong>Controlla la tua finestra</strong><p>Apri la pagina Steam Controller da loggato: vedrai entro quando è stimata la tua mail.</p>";
+      }
+    }
+    v.className = "verdict " + (cls === "info" ? "" : cls);
+    v.innerHTML = html;
+    renderTimeline();
+  }
+
+  function bind() {
+    $("f-window").addEventListener("change", function (e) { mine.window = e.target.value; saveMine(mine); renderVerdict(); });
+    $("f-reserved").addEventListener("change", function (e) { mine.reserved = e.target.value; saveMine(mine); renderVerdict(); });
+    $("f-got").addEventListener("change", function (e) {
+      mine.got = e.target.checked;
+      if (mine.got && !mine.gotAt) {
+        var n = new Date(); n.setMinutes(n.getMinutes() - n.getTimezoneOffset());
+        mine.gotAt = n.toISOString().slice(0, 16);
+      }
+      saveMine(mine); syncForm(); renderVerdict();
+    });
+    $("f-gotat").addEventListener("change", function (e) { mine.gotAt = e.target.value; saveMine(mine); renderVerdict(); });
+    $("f-bought").addEventListener("change", function (e) { mine.bought = e.target.checked; saveMine(mine); renderVerdict(); });
+    $("copy").addEventListener("click", function () {
+      var txt = $("q").textContent, btn = $("copy");
+      function done() { btn.textContent = "Copiato"; setTimeout(function () { btn.textContent = "Copia"; }, 1600); }
+      function fallback() {
+        var r = document.createRange(); r.selectNodeContents($("q"));
+        var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+        btn.textContent = "Selezionato: copia a mano";
+      }
+      try { navigator.clipboard.writeText(txt).then(done, fallback); } catch (e) { fallback(); }
+    });
+    Array.prototype.forEach.call(document.querySelectorAll(".seg button"), function (b) {
+      b.addEventListener("click", function () {
+        STATE.filter = b.getAttribute("data-filter");
+        Array.prototype.forEach.call(document.querySelectorAll(".seg button"), function (x) { x.setAttribute("aria-pressed", String(x === b)); });
+        renderReports();
+      });
+    });
+  }
+
+  // ------------------------------------------------------------ cronologia
+  function renderTimeline() {
+    var items = [
+      { d: "2026-05-04", t: "Lancio dello Steam Controller", s: "Le scorte iniziali finiscono prima del previsto." },
+      { d: "2026-05-08", t: "Aperta la coda di prenotazione", s: "Una prenotazione per account, priorità agli account in regola." },
+      { d: "2026-05-18", t: "Prime mail di acquisto", s: "72 ore per completare l'ordine.", approx: true },
+      { d: "2026-06-18", t: "Valve pubblica le finestre stimate", s: "Settembre 2026, dicembre 2026, 2027." },
+      { d: "2026-08-08", t: "Mail anche a chi aveva stima 2027", s: "Segnalato da un utente sul forum.", approx: true },
+      { d: "2026-09-30", t: "Fine finestra \"entro settembre\"", w: "2026-09" },
+      { d: "2026-12-31", t: "Fine finestra \"entro dicembre\"", w: "2026-12" },
+      { d: "2027-01-01", t: "Inizio finestra 2027", s: "Valve: «ulteriori informazioni sui tempi in arrivo».", w: "2027" }
+    ];
+    var post = STATE.data && lastControllerQueuePost(STATE.data);
+    if (post && post.date > "2026-06-19") items.push({ d: post.date.slice(0, 10), t: "Nuovo annuncio Valve sulla coda", s: post.title });
+    if (mine.reserved) items.push({ d: mine.reserved, t: "La tua prenotazione", mine: true });
+    if (mine.got && mine.gotAt) items.push({ d: mine.gotAt.slice(0, 10), t: "La tua mail di acquisto", mine: true });
+    var today = new Date(); today.setHours(0, 0, 0, 0);
+    var todayIso = today.getFullYear() + "-" + String(today.getMonth() + 1).padStart(2, "0") + "-" + String(today.getDate()).padStart(2, "0");
+    items.push({ d: todayIso, t: "Oggi", today: true });
+    items.sort(function (a, b) { return a.d < b.d ? -1 : a.d > b.d ? 1 : (a.today ? 1 : -1); });
+    $("timeline").innerHTML = items.map(function (it) {
+      var cls = it.today ? "today" : it.d < todayIso ? "past" : "";
+      if (it.mine || (it.w && it.w === mine.window)) cls += " mine";
+      var date = new Date(it.d + "T12:00:00");
+      var when = (it.approx ? "~" : "") + fmtShort.format(date) + (date.getFullYear() !== 2026 ? " " + date.getFullYear() : "");
+      var sub = it.s || (it.w && it.w === mine.window ? "La tua finestra." : "");
+      if (it.w && it.w === mine.window && it.s) sub = it.s + " La tua finestra.";
+      return '<li class="' + cls + '"><span class="when">' + esc(when) + '</span><span class="dot"></span><span class="what">' + esc(it.t) + (sub ? "<span>" + esc(sub) + "</span>" : "") + "</span></li>";
+    }).join("");
+  }
+
+  syncForm();
+  bind();
+  renderVerdict();
+  setInterval(renderVerdict, 30000);
+  load().then(render).catch(function () {
+    $("freshness").innerHTML = '<span class="pill bad">Dati non disponibili: riprova più tardi</span>';
+    $("tiles").innerHTML = "";
+    ["reports", "threads", "official"].forEach(function (id) { $(id).innerHTML = '<li class="empty">Dati non disponibili.</li>'; });
+  });
+})();
+</script>
+</body>
+</html>

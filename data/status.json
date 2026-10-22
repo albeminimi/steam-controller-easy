@@ -1,0 +1,337 @@
+{
+ "generated_at": "2026-10-22T07:14:56+00:00",
+ "sources": {
+  "official": {
+   "ok": true,
+   "updated_at": "2026-10-22T07:14:56+00:00"
+  },
+  "store": {
+   "ok": true,
+   "updated_at": "2026-10-22T07:14:56+00:00"
+  },
+  "forum": {
+   "ok": true,
+   "updated_at": "2026-10-22T07:14:56+00:00"
+  }
+ },
+ "official": [
+  {
+   "title": "Valve Index",
+   "url": "https://store.steampowered.com/news/group/45479024/view/711161056325534523",
+   "date": "2026-10-13T22:34:11+00:00",
+   "controller": false,
+   "reservations": false,
+   "summary": "Valve Index Valve Index is no longer being produced. Remaining Index headsets, controllers, and accessories are still available at the new prices here https://store.steampowered.com/hardware/valveindex while supplies last. Please note that the items listed are sold separately and are not a complete kit. A full set of c…"
+  },
+  {
+   "title": "Steam Frame updates: Reservation timing, software updates, and more",
+   "url": "https://store.steampowered.com/news/group/45479024/view/675134162359812783",
+   "date": "2026-10-09T18:18:23+00:00",
+   "controller": false,
+   "reservations": true,
+   "summary": "We launched Steam Frame last month, and with the reservation queues and waitlist in place we wanted to give folks a better idea of when they can expect to see an email with the option to purchase. We're also releasing the CAD files today, and have a number of additional updates we've shipped since launch. You'll find d…"
+  },
+  {
+   "title": "Getting Started with Steam Hardware",
+   "url": "https://store.steampowered.com/news/group/45479024/view/701020348316911431",
+   "date": "2026-09-16T22:44:47+00:00",
+   "controller": false,
+   "reservations": false,
+   "summary": "This page is a collection of stuff that will help you get the most out of your Steam Hardware."
+  },
+  {
+   "title": "Steam Frame is here!",
+   "url": "https://store.steampowered.com/news/group/45479024/view/692020124159311887",
+   "date": "2026-09-14T17:01:28+00:00",
+   "controller": false,
+   "reservations": true,
+   "summary": "Steam Frame launches today! Sign-up for reservations now in the following options: Steam Frame 256GB: 1,059 USD/ 1,529 CAD/ 1,049 EUR/ 889 GBP/ 1,609 AUD/ 4,539 PLN Steam Frame 1TB: 1,299 USD/ 1,859 CAD/ 1,279 EUR/ 1,089 GBP/ 1,969 AUD/ 5,549 PLN All prices are inclusive of VAT where applicable. Steam Frame ships direc…"
+  },
+  {
+   "title": "Steam Frame",
+   "url": "https://store.steampowered.com/news/group/45479024/view/689765787249934886",
+   "date": "2026-09-14T16:52:11+00:00",
+   "controller": false,
+   "reservations": false,
+   "summary": "Steam Frame is a streaming-first, wireless VR headset + controllers that can handle your whole Steam library. Step into immersive VR, or lean back and enjoy your non-VR catalog. And it supports stand-alone play too."
+  },
+  {
+   "title": "Getting the most out of your Steam Controller: Grip Sense",
+   "url": "https://store.steampowered.com/news/group/45479024/view/702141807556822237",
+   "date": "2026-08-05T18:37:02+00:00",
+   "controller": true,
+   "reservations": false,
+   "summary": "There are lots of features we're excited about when it comes to Steam Controller, and Grip Sense is one of them. Wait, what IS Grip Sense? Grip Sense is what we're calling the two capacitive touch sensors inside the handles of Steam Controller. They sense when your fingers are touching the locations highlighted in the …"
+  },
+  {
+   "title": "Getting the most out of your Steam Controller: Gyro",
+   "url": "https://store.steampowered.com/news/group/45479024/view/685257114654870228",
+   "date": "2026-08-05T18:36:51+00:00",
+   "controller": true,
+   "reservations": false,
+   "summary": "The Gyroscope The Steam Controller has a gyroscope inside - a highly accurate sensor for detecting the controller's rotation. It allows you to do things in-game like: Control cameras in an exploration game Aim precisely in an FPS Move a mouse cursor around the screen for casual mouse focused games Turn a car's steering…"
+  },
+  {
+   "title": "Steam Machine updates: Reservations, waitlists, and more",
+   "url": "https://store.steampowered.com/news/group/45479024/view/698770449667981836",
+   "date": "2026-07-28T21:54:38+00:00",
+   "controller": false,
+   "reservations": true,
+   "summary": "We began shipping Steam Machine at the end of June and now that we’re a few weeks in, we wanted to share more information both on Steam Machine itself and the status of the reservation queue and waitlist as it stands today. Quick Steam Machine updates: FSR4.1 is now available on Proton Experimental for titles supportin…"
+  },
+  {
+   "title": "Steam Machine launches today!",
+   "url": "https://store.steampowered.com/news/group/45479024/view/685257114654870245",
+   "date": "2026-06-22T17:07:39+00:00",
+   "controller": true,
+   "reservations": true,
+   "summary": "Steam Machine is launching in four different options that you can sign up for beginning today: Steam Machine 512GB: $1,049 USD / 1,509 CAD / 1,039 EUR / 879 GBP / 1,609 AUD / 4,389 PLN Bundle: Steam Machine 512GB + Steam Controller: $1,128 USD / 1,628 CAD / 1,108 EUR / 938 GBP / 1,728 AUD / 4,698 PLN Steam Machine 2TB:…"
+  },
+  {
+   "title": "Steam Controller: Reservations update",
+   "url": "https://store.steampowered.com/news/group/45479024/view/697641379212297809",
+   "date": "2026-06-18T19:53:40+00:00",
+   "controller": true,
+   "reservations": true,
+   "summary": "When we launched Steam Controller last month, we quickly saw that initial demand exceeded our expectations. Switching to a reservation queue has (hopefully) cut down on the headaches on the customer side, and for us it's also been helpful as we plan ahead and try to get as many out as quickly as we are able. We have no…"
+  }
+ ],
+ "store": {
+  "countries": {
+   "it": {
+    "price": "99,--€",
+    "currency": "EUR",
+    "cents": 9900,
+    "listed": true
+   },
+   "de": {
+    "price": "99,--€",
+    "currency": "EUR",
+    "cents": 9900,
+    "listed": true
+   },
+   "fr": {
+    "price": "99,--€",
+    "currency": "EUR",
+    "cents": 9900,
+    "listed": true
+   },
+   "es": {
+    "price": "99,--€",
+    "currency": "EUR",
+    "cents": 9900,
+    "listed": true
+   },
+   "nl": {
+    "price": "99,--€",
+    "currency": "EUR",
+    "cents": 9900,
+    "listed": true
+   },
+   "gb": {
+    "price": "£85.00",
+    "currency": "GBP",
+    "cents": 8500,
+    "listed": true
+   }
+  },
+  "reservation_queue": true,
+  "learn_more": "https://store.steampowered.com/news/group/45479024/view/697641379212297809",
+  "page": "https://store.steampowered.com/hardware/steamcontroller"
+ },
+ "forum": {
+  "threads": [
+   {
+    "id": "583935635494245397",
+    "title": "When should I get my steam controller",
+    "preview": "I ordered yesterday and said 3-5 business days, will it come Monday to Wednesday or earlier?",
+    "url": "https://steamcommunity.com/app/4165870/discussions/0/583935635494245397/",
+    "last_post": "2026-10-17T21:29:22+00:00",
+    "replies": 9,
+    "eu": [],
+    "first_seen": "2026-10-22T07:11:27+00:00"
+   },
+   {
+    "id": "571540300205448946",
+    "title": "Hardware wishlist or reservation notifications",
+    "preview": "The mobile Steam app and the PC Steam client do not currently notify the users when their wishlisted hardware becomes available. It also does not generate any notifications when the hardware reservati…",
+    "url": "https://steamcommunity.com/app/4165870/discussions/0/571540300205448946/",
+    "last_post": "2026-09-22T15:24:40+00:00",
+    "replies": 9,
+    "eu": [],
+    "first_seen": "2026-10-22T07:11:27+00:00"
+   },
+   {
+    "id": "617711086156921054",
+    "title": "Didn’t get the email to purchase but!",
+    "preview": "Steam support came to the rescue, couldn’t reply to your support message Borris but thank you for your quick reply and the help!",
+    "url": "https://steamcommunity.com/app/4165870/discussions/0/617711086156921054/",
+    "last_post": "2026-09-15T15:32:23+00:00",
+    "replies": 0,
+    "eu": [],
+    "first_seen": "2026-10-22T07:11:27+00:00"
+   },
+   {
+    "id": "571548834124044893",
+    "title": "Available when?",
+    "preview": "I have my reservation since July 3rd and nothing. How long does it take to make more controllers?",
+    "url": "https://steamcommunity.com/app/4165870/discussions/0/571548834124044893/",
+    "last_post": "2026-09-13T18:54:19+00:00",
+    "replies": 12,
+    "eu": [],
+    "first_seen": "2026-10-22T07:11:27+00:00"
+   },
+   {
+    "id": "617711086156677850",
+    "title": "XBOX Elite Series 2 Finally Died after 5 years with it. Can't wait for the Steam Controller",
+    "preview": "My elite series 2 controller finally died, I put in my reservation for the Steam Controller since its the only controller that gives me interest. Good 5 years with series 2. But yeah I put my reservat…",
+    "url": "https://steamcommunity.com/app/4165870/discussions/0/617711086156677850/",
+    "last_post": "2026-09-13T04:10:38+00:00",
+    "replies": 1,
+    "eu": [],
+    "first_seen": "2026-10-22T07:11:27+00:00"
+   },
+   {
+    "id": "569291508114602107",
+    "title": "Missed out because I didn't read my emails",
+    "preview": "I know that I'll get a lot of flak in this but honestly, I needed to vent and argue what Valve has done is not ideal and should have been handled better. I do need to preface that I had reserved the S…",
+    "url": "https://steamcommunity.com/app/4165870/discussions/0/569291508114602107/",
+    "last_post": "2026-09-09T11:20:05+00:00",
+    "replies": 9,
+    "eu": [],
+    "first_seen": "2026-10-22T07:11:27+00:00"
+   },
+   {
+    "id": "586185220309700078",
+    "title": "Email for controller",
+    "preview": "Got the email for controller said three days to purchase but I am stuck in a loop. clicking link just goes to steam start page. It has been ongoing for a couple of days... It is now past the three day…",
+    "url": "https://steamcommunity.com/app/4165870/discussions/0/586185220309700078/",
+    "last_post": "2026-09-08T19:48:46+00:00",
+    "replies": 2,
+    "eu": [],
+    "first_seen": "2026-10-22T07:11:27+00:00"
+   },
+   {
+    "id": "586184898467897752",
+    "title": "Steam Controller purchase invitation failed and I can’t contact Support",
+    "preview": "I received my Steam Controller purchase invitation on August 31 and tried to complete the purchase right away. The payment failed and Steam did not take any money. Steam still shows the failed $106.30…",
+    "url": "https://steamcommunity.com/app/4165870/discussions/0/586184898467897752/",
+    "last_post": "2026-09-02T09:40:17+00:00",
+    "replies": 2,
+    "eu": [],
+    "first_seen": "2026-10-22T07:11:27+00:00"
+   },
+   {
+    "id": "838376606937572195",
+    "title": "@Valve Ditch GLS ♥♥♥♥♥♥♥♥♥♥♥",
+    "preview": "Valve, we need to talk. I just read on Reddit that people in the EU from the second batch already have their controllers send out to them, including tracking number. While, according to a poll in the …",
+    "url": "https://steamcommunity.com/app/4165870/discussions/0/838376606937572195/",
+    "last_post": "2026-08-28T12:14:00+00:00",
+    "replies": 18,
+    "eu": [
+     "GLS",
+     "EU",
+     "DHL"
+    ],
+    "first_seen": "2026-10-22T07:11:27+00:00"
+   },
+   {
+    "id": "586184264603689984",
+    "title": "Missed Reservations...",
+    "preview": "I queued up for the Steam Controller in late May, and the estimated order period showed as December 2026. For about 5 days this August, I couldn't be online and I missed the window for the Steam contr…",
+    "url": "https://steamcommunity.com/app/4165870/discussions/0/586184264603689984/",
+    "last_post": "2026-08-26T11:58:37+00:00",
+    "replies": 2,
+    "eu": [],
+    "first_seen": "2026-10-22T07:11:27+00:00"
+   },
+   {
+    "id": "586182995821705289",
+    "title": "Dumb that reservation notification comes in an email and not Steam's own notification system",
+    "preview": "Missed mine because I'm on a trip and not checking my emails on a daily basis, but I do have my Steam Deck that I've been using daily. Couldn't have notified me on there???",
+    "url": "https://steamcommunity.com/app/4165870/discussions/0/586182995821705289/",
+    "last_post": "2026-08-23T17:41:33+00:00",
+    "replies": 3,
+    "eu": [],
+    "first_seen": "2026-10-22T07:11:27+00:00"
+   }
+  ],
+  "reports": [
+   {
+    "id": "583935635494245397-565922740069109916",
+    "date": "2026-10-17T21:29:22+00:00",
+    "text": "I was out of town and didn't check my email until today - missed it by two days. This email notification outside of the Steam client sucks.",
+    "eu": [],
+    "thread": "When should I get my steam controller",
+    "url": "https://steamcommunity.com/app/4165870/discussions/0/583935635494245397/#c565922740069109916",
+    "first_seen": "2026-10-22T07:14:31+00:00"
+   },
+   {
+    "id": "583935635494245397-583935973604235890",
+    "date": "2026-10-03T22:53:49+00:00",
+    "text": "mine said 6 to 10 days and i got it on the second, bought it on the 26th",
+    "eu": [],
+    "thread": "When should I get my steam controller",
+    "url": "https://steamcommunity.com/app/4165870/discussions/0/583935635494245397/#c583935973604235890",
+    "first_seen": "2026-10-22T07:14:31+00:00"
+   },
+   {
+    "id": "583935635494245397-op",
+    "date": "2026-10-02T02:43:51+00:00",
+    "text": "I ordered yesterday and said 3-5 business days, will it come Monday to Wednesday or earlier?",
+    "eu": [],
+    "thread": "When should I get my steam controller",
+    "url": "https://steamcommunity.com/app/4165870/discussions/0/583935635494245397/",
+    "first_seen": "2026-10-22T07:16:36+00:00"
+   },
+   {
+    "id": "571548834124044893-617710833111304646",
+    "date": "2026-09-11T19:54:02+00:00",
+    "text": "I pre-ordered on 16th May and have just paid for it a moment ago when the email came through",
+    "eu": [],
+    "thread": "Available when?",
+    "url": "https://steamcommunity.com/app/4165870/discussions/0/571548834124044893/#c617710833111304646",
+    "first_seen": "2026-10-22T07:11:27+00:00"
+   },
+   {
+    "id": "571548834124044893-571548834124058292",
+    "date": "2026-09-09T13:58:19+00:00",
+    "text": "It took me roughly 3 months to get my email and I preordered day 1 immediately. My original estimate was 2027. I got it like August 8th.",
+    "eu": [],
+    "thread": "Available when?",
+    "url": "https://steamcommunity.com/app/4165870/discussions/0/571548834124044893/#c571548834124058292",
+    "first_seen": "2026-10-22T07:11:27+00:00"
+   },
+   {
+    "id": "586185220309700078-op",
+    "date": "2026-09-08T19:38:39+00:00",
+    "text": "Got the email for controller said three days to purchase but I am stuck in a loop. clicking link just goes to steam start page. It has been ongoing for a couple of days... It is now past the three days and I don't want t…",
+    "eu": [],
+    "thread": "Email for controller",
+    "url": "https://steamcommunity.com/app/4165870/discussions/0/586185220309700078/",
+    "first_seen": "2026-10-22T07:16:36+00:00"
+   },
+   {
+    "id": "586184898467897752-586184898467901407",
+    "date": "2026-09-02T09:21:36+00:00",
+    "text": "I have a similar situation. I finally got the invitation to purchase steam machine with controller and I made the purchase via PayPal. It went through in the morning so in steam, the order shows as 'Processed payment' ho…",
+    "eu": [],
+    "thread": "Steam Controller purchase invitation failed and I can’t contact Support",
+    "url": "https://steamcommunity.com/app/4165870/discussions/0/586184898467897752/#c586184898467901407",
+    "first_seen": "2026-10-22T07:11:27+00:00"
+   },
+   {
+    "id": "586182995821705289-585058037498248831",
+    "date": "2026-08-23T17:41:33+00:00",
+    "text": "…. I knew it was an issue though so I tried to watch my email but I still missed it by a day. After being gaslight by support during the 1st wave that my payment issue must be incorrect if I wasn't able to buy a controlle…",
+    "eu": [],
+    "thread": "Dumb that reservation notification comes in an email and not Steam's own notification system",
+    "url": "https://steamcommunity.com/app/4165870/discussions/0/586182995821705289/#c585058037498248831",
+    "first_seen": "2026-10-22T07:14:31+00:00"
+   }
+  ],
+  "pages_read": 8
+ },
+ "events": [],
+ "errors": []
+}
