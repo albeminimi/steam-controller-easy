@@ -16,7 +16,7 @@ La posizione in coda e lo stato della tua prenotazione li vede solo Valve, da lo
 ## Come funziona
 
 - `scripts/update_status.py` raccoglie i dati (solo libreria standard Python) e scrive `data/status.json`.
-- `.github/workflows/update.yml` lo esegue ogni 3 ore, salva il JSON nel repository e pubblica il sito su GitHub Pages.
+- `.github/workflows/update.yml` lo esegue ogni ora, salva il JSON nel repository e pubblica il sito su GitHub Pages.
 - `index.html` è la pagina: legge `data/status.json`, senza dipendenze esterne a parte i font.
 
 ### Attivare GitHub Pages (una volta sola)

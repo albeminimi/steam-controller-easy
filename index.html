@@ -266,7 +266,7 @@ footer p { margin: 0; max-width: 75ch; }
       <span>Zona <b>Europa</b></span>
     </div>
     <h1>A che punto è la coda?</h1>
-    <p class="lede">Annunci Valve, stato dello store e segnalazioni di chi ha ricevuto la mail di acquisto, raccolti in automatico ogni 3 ore. La tua posizione nella coda la vede solo Valve: qui trovi i segnali pubblici e un promemoria per la tua prenotazione.</p>
+    <p class="lede">Annunci Valve, stato dello store e segnalazioni di chi ha ricevuto la mail di acquisto, raccolti in automatico ogni ora. La tua posizione nella coda la vede solo Valve: qui trovi i segnali pubblici e un promemoria per la tua prenotazione.</p>
     <div class="freshness" id="freshness"><span class="pill plain">Caricamento dati…</span></div>
   </header>
 
@@ -396,7 +396,7 @@ footer p { margin: 0; max-width: 75ch; }
   </section>
 
   <footer>
-    <p>Dati raccolti da una GitHub Action ogni 3 ore dal feed RSS degli annunci hardware Valve, dall'API dello Steam Store (prezzi in IT, DE, FR, ES, NL, GB) dal forum "General Discussions" dello Steam Controller e da Reddit (r/SteamController, r/Steam, r/SteamMachine, r/SteamFrame, r/SteamDeck). Reddit blocca spesso le richieste automatiche: in quel caso i post arrivano dall'archivio pubblico PullPush, che ha qualche giorno di ritardo. Su Reddit si scartano i messaggi sui bundle Steam Machine "con controller", che hanno una coda separata. Le segnalazioni sono riconosciute in automatico da frasi come "got my email": possono esserci falsi positivi e mancare messaggi che non citano il paese.</p>
+    <p>Dati raccolti da una GitHub Action ogni ora (GitHub a volte ritarda o salta qualche giro) dal feed RSS degli annunci hardware Valve, dall'API dello Steam Store (prezzi in IT, DE, FR, ES, NL, GB) dal forum "General Discussions" dello Steam Controller e da Reddit (r/SteamController, r/Steam, r/SteamMachine, r/SteamFrame, r/SteamDeck). Reddit blocca spesso le richieste automatiche: in quel caso i post arrivano dall'archivio pubblico PullPush, che ha qualche giorno di ritardo. Su Reddit si scartano i messaggi sui bundle Steam Machine "con controller", che hanno una coda separata. Le segnalazioni sono riconosciute in automatico da frasi come "got my email": possono esserci falsi positivi e mancare messaggi che non citano il paese.</p>
     <p>Sito non ufficiale, non affiliato a Valve. <a href="https://github.com/albeminimi/steam-controller-easy">Codice e storico dati su GitHub</a>.</p>
   </footer>
 </div>
@@ -460,7 +460,7 @@ footer p { margin: 0; max-width: 75ch; }
     var gen = d.generated_at;
     var age = (Date.now() - new Date(gen).getTime()) / 3600000;
     var cls = age < 7 ? "ok" : age < 24 ? "warn" : "bad";
-    var html = '<span class="pill ' + cls + '">Aggiornato ' + esc(fmtTime.format(new Date(gen))) + " · " + esc(ago(gen)) + "</span>";
+    var html = '<span class="pill ' + cls + '">Dati raccolti ' + esc(fmtTime.format(new Date(gen))) + " · " + esc(ago(gen)) + "</span>";
     var names = { official: "Annunci Valve", store: "Store", forum: "Forum Steam", reddit: "Reddit" };
     Object.keys(names).forEach(function (k) {
       var s = (d.sources || {})[k];
@@ -468,7 +468,7 @@ footer p { margin: 0; max-width: 75ch; }
     });
     var rd = d.reddit || {};
     if (rd.via === "pullpush" && rd.latest) {
-      html += '<span class="pill warn">Reddit via archivio: ultimo post ' + esc(fmtShort.format(new Date(rd.latest))) + "</span>";
+      html += '<span class="pill warn" title="Reddit blocca la lettura automatica: i post arrivano dall\'archivio PullPush, che è indietro di qualche giorno.">Reddit: post fino al ' + esc(fmtShort.format(new Date(rd.latest))) + " (archivio in ritardo)</span>";
     }
     if (age >= 24) html += '<span class="pill plain">I dati non si aggiornano da più di un giorno: controlla la GitHub Action</span>';
     $("freshness").innerHTML = html;
