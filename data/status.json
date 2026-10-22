@@ -1,17 +1,17 @@
 {
- "generated_at": "2026-10-22T07:14:56+00:00",
+ "generated_at": "2026-10-22T07:20:03+00:00",
  "sources": {
   "official": {
    "ok": true,
-   "updated_at": "2026-10-22T07:14:56+00:00"
+   "updated_at": "2026-10-22T07:20:03+00:00"
   },
   "store": {
    "ok": true,
-   "updated_at": "2026-10-22T07:14:56+00:00"
+   "updated_at": "2026-10-22T07:20:03+00:00"
   },
   "forum": {
    "ok": true,
-   "updated_at": "2026-10-22T07:14:56+00:00"
+   "updated_at": "2026-10-22T07:20:03+00:00"
   }
  },
  "official": [
@@ -333,5 +333,11 @@
   "pages_read": 8
  },
  "events": [],
- "errors": []
+ "errors": [
+  "ricerca forum 'email': HTTP Error 429: Too Many Requests",
+  "ricerca forum 'reservation': HTTP Error 429: Too Many Requests",
+  "ricerca forum 'order email': HTTP Error 429: Too Many Requests",
+  "ricerca forum 'Europe': HTTP Error 429: Too Many Requests",
+  "ricerca forum 'EU': HTTP Error 429: Too Many Requests"
+ ]
 }
