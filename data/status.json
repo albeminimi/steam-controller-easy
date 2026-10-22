@@ -1,21 +1,21 @@
 {
- "generated_at": "2026-10-22T14:55:19+00:00",
+ "generated_at": "2026-10-22T15:13:31+00:00",
  "sources": {
   "official": {
    "ok": true,
-   "updated_at": "2026-10-22T14:55:19+00:00"
+   "updated_at": "2026-10-22T15:13:31+00:00"
   },
   "store": {
    "ok": true,
-   "updated_at": "2026-10-22T14:55:19+00:00"
+   "updated_at": "2026-10-22T15:13:31+00:00"
   },
   "forum": {
    "ok": true,
-   "updated_at": "2026-10-22T14:55:19+00:00"
+   "updated_at": "2026-10-22T15:13:31+00:00"
   },
   "reddit": {
    "ok": true,
-   "updated_at": "2026-10-22T14:55:19+00:00"
+   "updated_at": "2026-10-22T15:13:31+00:00"
   }
  },
  "official": [
@@ -935,6 +935,21 @@
     "first_seen": "2026-10-22T14:28:32+00:00"
    },
    {
+    "id": "reddit-t3_1wtylq6",
+    "source": "reddit",
+    "date": "2026-09-30T07:29:37+00:00",
+    "status": "got",
+    "text": "…l have a reservation from the first list randomization that they haven’t gotten an email for? All I know is that valve is cooking, because my steam controller that was estimated for 2027 I got the order for in September.",
+    "reserved": null,
+    "reserved_approx": false,
+    "reserved_phrase": null,
+    "estimate": "2027",
+    "eu": [],
+    "thread": "r/SteamFrame · WAITLISTERS WERE MOVED UP",
+    "url": "https://www.reddit.com/r/SteamFrame/comments/1wtylq6/waitlisters_were_moved_up/",
+    "first_seen": "2026-10-22T15:16:11+00:00"
+   },
+   {
     "id": "reddit-t1_pcpm7x6",
     "source": "reddit",
     "date": "2026-09-29T02:37:22+00:00",
@@ -1199,8 +1214,8 @@
     "id": "reddit-t3_1vwvrzo",
     "source": "reddit",
     "date": "2026-08-24T07:23:18+00:00",
-    "status": "got",
-    "text": "…and steammachine Long time lurker and first time poster here. I finally received my email over the weekend about the base model with the controller (Australia, joined the queue on July 1). I’ve always been a console gam…",
+    "status": "waiting",
+    "text": "…weekend about the base model with the controller (Australia, joined the queue on July 1). I’ve always been a console gamer, primarily on PlayStation, and I currently own a PS5. I feel like I have missed out on many grea…",
     "reserved": "2026-07-01",
     "reserved_approx": false,
     "reserved_phrase": "July 1",
@@ -1208,23 +1223,6 @@
     "eu": [],
     "thread": "r/steammachine · Game recommendations - New to steam and steammachine",
     "url": "https://www.reddit.com/r/steammachine/comments/1vwvrzo/game_recommendations_new_to_steam_and_steammachine/",
-    "first_seen": "2026-10-22T14:28:32+00:00"
-   },
-   {
-    "id": "reddit-t3_1vwfcnh",
-    "source": "reddit",
-    "date": "2026-08-23T18:45:09+00:00",
-    "status": "got",
-    "text": "…t/removed. I reserved a steam controller begining of may this year (even got the a email confirming it). I was browsing Steam store today and saw the steam controller under recommendations displaying 99 Euro's. Clicked t…",
-    "reserved": null,
-    "reserved_approx": false,
-    "reserved_phrase": null,
-    "estimate": null,
-    "eu": [
-     "Euro"
-    ],
-    "thread": "r/Steam · My Steam Controller reservation got reset/removed.",
-    "url": "https://www.reddit.com/r/Steam/comments/1vwfcnh/my_steam_controller_reservation_got_resetremoved/",
     "first_seen": "2026-10-22T14:28:32+00:00"
    }
   ]
