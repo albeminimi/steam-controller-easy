@@ -1,21 +1,21 @@
 {
- "generated_at": "2026-10-23T07:31:46+00:00",
+ "generated_at": "2026-10-23T13:26:12+00:00",
  "sources": {
   "official": {
    "ok": true,
-   "updated_at": "2026-10-23T07:31:46+00:00"
+   "updated_at": "2026-10-23T13:26:12+00:00"
   },
   "store": {
    "ok": true,
-   "updated_at": "2026-10-23T07:31:46+00:00"
+   "updated_at": "2026-10-23T13:26:12+00:00"
   },
   "forum": {
    "ok": true,
-   "updated_at": "2026-10-23T07:31:46+00:00"
+   "updated_at": "2026-10-23T13:26:12+00:00"
   },
   "reddit": {
    "ok": true,
-   "updated_at": "2026-10-23T07:31:46+00:00"
+   "updated_at": "2026-10-23T13:26:12+00:00"
   }
  },
  "official": [
@@ -1169,21 +1169,6 @@
     ],
     "thread": "r/SteamController · Should I reach out to Steam support? (Steam Controller delivery)",
     "url": "https://www.reddit.com/r/SteamController/comments/1vz63a6/should_i_reach_out_to_steam_support_steam/",
-    "first_seen": "2026-10-22T14:28:32+00:00"
-   },
-   {
-    "id": "reddit-t3_1vwwwtm",
-    "source": "reddit",
-    "date": "2026-08-24T08:31:28+00:00",
-    "status": "got",
-    "text": "…sucks 3 days to buy after getting the email is bulll shite. Of course i got the email on Monday so i wouldn't have been able to buy till Friday unless i saved the money 🙃 Maybe i should find a reseller near me and freel…",
-    "reserved": null,
-    "reserved_approx": false,
-    "reserved_phrase": null,
-    "estimate": null,
-    "eu": [],
-    "thread": "r/SteamController · Rip me missed my reservation email,now i got to wait a year at another chance to get ne 😔.",
-    "url": "https://www.reddit.com/r/SteamController/comments/1vwwwtm/rip_me_missed_my_reservation_emailnow_i_got_to/",
     "first_seen": "2026-10-22T14:28:32+00:00"
    }
   ]
