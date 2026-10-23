@@ -1,21 +1,21 @@
 {
- "generated_at": "2026-10-22T19:01:18+00:00",
+ "generated_at": "2026-10-23T07:31:46+00:00",
  "sources": {
   "official": {
    "ok": true,
-   "updated_at": "2026-10-22T19:01:18+00:00"
+   "updated_at": "2026-10-23T07:31:46+00:00"
   },
   "store": {
    "ok": true,
-   "updated_at": "2026-10-22T19:01:18+00:00"
+   "updated_at": "2026-10-23T07:31:46+00:00"
   },
   "forum": {
    "ok": true,
-   "updated_at": "2026-10-22T19:01:18+00:00"
+   "updated_at": "2026-10-23T07:31:46+00:00"
   },
   "reddit": {
    "ok": true,
-   "updated_at": "2026-10-22T19:01:18+00:00"
+   "updated_at": "2026-10-23T07:31:46+00:00"
   }
  },
  "official": [
@@ -1184,21 +1184,6 @@
     "eu": [],
     "thread": "r/SteamController · Rip me missed my reservation email,now i got to wait a year at another chance to get ne 😔.",
     "url": "https://www.reddit.com/r/SteamController/comments/1vwwwtm/rip_me_missed_my_reservation_emailnow_i_got_to/",
-    "first_seen": "2026-10-22T14:28:32+00:00"
-   },
-   {
-    "id": "reddit-t3_1vwvrzo",
-    "source": "reddit",
-    "date": "2026-08-24T07:23:18+00:00",
-    "status": "waiting",
-    "text": "…weekend about the base model with the controller (Australia, joined the queue on July 1). I’ve always been a console gamer, primarily on PlayStation, and I currently own a PS5. I feel like I have missed out on many grea…",
-    "reserved": "2026-07-01",
-    "reserved_approx": false,
-    "reserved_phrase": "July 1",
-    "estimate": null,
-    "eu": [],
-    "thread": "r/steammachine · Game recommendations - New to steam and steammachine",
-    "url": "https://www.reddit.com/r/steammachine/comments/1vwvrzo/game_recommendations_new_to_steam_and_steammachine/",
     "first_seen": "2026-10-22T14:28:32+00:00"
    }
   ]
