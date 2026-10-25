@@ -1,21 +1,21 @@
 {
- "generated_at": "2026-10-23T13:26:12+00:00",
+ "generated_at": "2026-10-25T06:07:36+00:00",
  "sources": {
   "official": {
    "ok": true,
-   "updated_at": "2026-10-23T13:26:12+00:00"
+   "updated_at": "2026-10-25T06:07:36+00:00"
   },
   "store": {
    "ok": true,
-   "updated_at": "2026-10-23T13:26:12+00:00"
+   "updated_at": "2026-10-25T06:07:36+00:00"
   },
   "forum": {
    "ok": true,
-   "updated_at": "2026-10-23T13:26:12+00:00"
+   "updated_at": "2026-10-25T06:07:36+00:00"
   },
   "reddit": {
    "ok": true,
-   "updated_at": "2026-10-23T13:26:12+00:00"
+   "updated_at": "2026-10-25T06:07:36+00:00"
   }
  },
  "official": [
@@ -390,20 +390,6 @@
     "thread": "Steam Controller purchase invitation failed and I can’t contact Support",
     "url": "https://steamcommunity.com/app/4165870/discussions/0/586184898467897752/",
     "first_seen": "2026-10-22T14:56:55+00:00"
-   },
-   {
-    "id": "586184264603689984-op",
-    "date": "2026-08-26T05:06:56+00:00",
-    "status": "got",
-    "text": "…December 2026. For about 5 days this August, I couldn't be online and I missed the window for the Steam controller. Is there nothing I can do except wait until who-knows-when in 2027 to be able to place an order? Edit:…",
-    "reserved": "2026-05-25",
-    "reserved_approx": true,
-    "reserved_phrase": "late May",
-    "estimate": "2026-12",
-    "eu": [],
-    "thread": "Missed Reservations...",
-    "url": "https://steamcommunity.com/app/4165870/discussions/0/586184264603689984/",
-    "first_seen": "2026-10-22T09:20:18+00:00"
    }
   ],
   "pages_read": 8
