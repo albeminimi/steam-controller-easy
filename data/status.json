@@ -1,21 +1,21 @@
 {
- "generated_at": "2026-10-25T06:07:36+00:00",
+ "generated_at": "2026-10-25T16:17:47+00:00",
  "sources": {
   "official": {
    "ok": true,
-   "updated_at": "2026-10-25T06:07:36+00:00"
+   "updated_at": "2026-10-25T16:17:47+00:00"
   },
   "store": {
    "ok": true,
-   "updated_at": "2026-10-25T06:07:36+00:00"
+   "updated_at": "2026-10-25T16:17:47+00:00"
   },
   "forum": {
    "ok": true,
-   "updated_at": "2026-10-25T06:07:36+00:00"
+   "updated_at": "2026-10-25T16:17:47+00:00"
   },
   "reddit": {
    "ok": true,
-   "updated_at": "2026-10-25T06:07:36+00:00"
+   "updated_at": "2026-10-25T16:17:47+00:00"
   }
  },
  "official": [
@@ -237,16 +237,6 @@
      "EU",
      "DHL"
     ],
-    "first_seen": "2026-10-22T07:11:27+00:00"
-   },
-   {
-    "id": "586184264603689984",
-    "title": "Missed Reservations...",
-    "preview": "I queued up for the Steam Controller in late May, and the estimated order period showed as December 2026. For about 5 days this August, I couldn't be online and I missed the window for the Steam contr…",
-    "url": "https://steamcommunity.com/app/4165870/discussions/0/586184264603689984/",
-    "last_post": "2026-08-26T11:58:37+00:00",
-    "replies": 2,
-    "eu": [],
     "first_seen": "2026-10-22T07:11:27+00:00"
    }
   ],
