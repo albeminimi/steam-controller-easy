@@ -1,21 +1,21 @@
 {
- "generated_at": "2026-10-25T16:17:47+00:00",
+ "generated_at": "2026-10-25T19:36:34+00:00",
  "sources": {
   "official": {
    "ok": true,
-   "updated_at": "2026-10-25T16:17:47+00:00"
+   "updated_at": "2026-10-25T19:36:34+00:00"
   },
   "store": {
    "ok": true,
-   "updated_at": "2026-10-25T16:17:47+00:00"
+   "updated_at": "2026-10-25T19:36:34+00:00"
   },
   "forum": {
    "ok": true,
-   "updated_at": "2026-10-25T16:17:47+00:00"
+   "updated_at": "2026-10-25T19:36:34+00:00"
   },
   "reddit": {
    "ok": true,
-   "updated_at": "2026-10-25T16:17:47+00:00"
+   "updated_at": "2026-10-25T19:36:34+00:00"
   }
  },
  "official": [
@@ -1127,24 +1127,6 @@
     "eu": [],
     "thread": "r/SteamController · After waiting for like 3 months my turn in the reservation finally showed up! Also do not ever give into scalpers!",
     "url": "https://www.reddit.com/r/SteamController/comments/1w4snte/after_waiting_for_like_3_months_my_turn_in_the/",
-    "first_seen": "2026-10-22T14:28:32+00:00"
-   },
-   {
-    "id": "reddit-t3_1vz63a6",
-    "source": "reddit",
-    "date": "2026-08-26T18:52:59+00:00",
-    "status": "got",
-    "text": "Should I reach out to Steam support? (Steam Controller delivery) I bought the controller on August 19th after getting the email from Steam, and it got shipped by GLS on the 20th. On the 21st, I got an email and SMS from…",
-    "reserved": null,
-    "reserved_approx": false,
-    "reserved_phrase": null,
-    "estimate": null,
-    "eu": [
-     "GLS",
-     "Latvia"
-    ],
-    "thread": "r/SteamController · Should I reach out to Steam support? (Steam Controller delivery)",
-    "url": "https://www.reddit.com/r/SteamController/comments/1vz63a6/should_i_reach_out_to_steam_support_steam/",
     "first_seen": "2026-10-22T14:28:32+00:00"
    }
   ]
