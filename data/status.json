@@ -1,21 +1,21 @@
 {
- "generated_at": "2026-10-25T19:36:34+00:00",
+ "generated_at": "2026-10-26T13:03:49+00:00",
  "sources": {
   "official": {
    "ok": true,
-   "updated_at": "2026-10-25T19:36:34+00:00"
+   "updated_at": "2026-10-26T13:03:49+00:00"
   },
   "store": {
    "ok": true,
-   "updated_at": "2026-10-25T19:36:34+00:00"
+   "updated_at": "2026-10-26T13:03:49+00:00"
   },
   "forum": {
    "ok": true,
-   "updated_at": "2026-10-25T19:36:34+00:00"
+   "updated_at": "2026-10-26T13:03:49+00:00"
   },
   "reddit": {
    "ok": true,
-   "updated_at": "2026-10-25T19:36:34+00:00"
+   "updated_at": "2026-10-26T13:03:49+00:00"
   }
  },
  "official": [
@@ -146,6 +146,18 @@
  "forum": {
   "threads": [
    {
+    "id": "573804739774643003",
+    "title": "Order refunded with no explanation - can't re-order",
+    "preview": "This morning I got an email saying \"Your order could not be shipped\" and then another saying \"Steam purchase refunded\". It won't let me contact support from my purchases page (there's no appropriate o…",
+    "url": "https://steamcommunity.com/app/4165870/discussions/0/573804739774643003/",
+    "last_post": "2026-10-26T11:38:54+00:00",
+    "replies": 1,
+    "eu": [
+     "£"
+    ],
+    "first_seen": "2026-10-26T13:05:17+00:00"
+   },
+   {
     "id": "583935635494245397",
     "title": "When should I get my steam controller",
     "preview": "I ordered yesterday and said 3-5 business days, will it come Monday to Wednesday or earlier?",
@@ -241,6 +253,20 @@
    }
   ],
   "reports": [
+   {
+    "id": "573804739774643003-op",
+    "date": "2026-10-26T09:41:34+00:00",
+    "status": "got",
+    "text": "This morning I got an email saying \"Your order could not be shipped\" and then another saying \"Steam purchase refunded\". It won't let me contact support from my purchases page (there's no appropriate option and the other…",
+    "reserved": null,
+    "reserved_approx": false,
+    "reserved_phrase": null,
+    "estimate": null,
+    "eu": [],
+    "thread": "Order refunded with no explanation - can't re-order",
+    "url": "https://steamcommunity.com/app/4165870/discussions/0/573804739774643003/",
+    "first_seen": "2026-10-26T13:05:17+00:00"
+   },
    {
     "id": "583935635494245397-565922740069109916",
     "date": "2026-10-17T21:29:22+00:00",
