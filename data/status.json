@@ -1,21 +1,21 @@
 {
- "generated_at": "2026-10-26T23:52:48+00:00",
+ "generated_at": "2026-10-27T10:33:35+00:00",
  "sources": {
   "official": {
    "ok": true,
-   "updated_at": "2026-10-26T23:52:48+00:00"
+   "updated_at": "2026-10-27T10:33:35+00:00"
   },
   "store": {
    "ok": true,
-   "updated_at": "2026-10-26T23:52:48+00:00"
+   "updated_at": "2026-10-27T10:33:35+00:00"
   },
   "forum": {
    "ok": true,
-   "updated_at": "2026-10-26T23:52:48+00:00"
+   "updated_at": "2026-10-27T10:33:35+00:00"
   },
   "reddit": {
    "ok": true,
-   "updated_at": "2026-10-26T23:52:48+00:00"
+   "updated_at": "2026-10-27T10:33:35+00:00"
   }
  },
  "official": [
@@ -146,12 +146,22 @@
  "forum": {
   "threads": [
    {
+    "id": "573805022987423849",
+    "title": "How long am i supposed to wait?",
+    "preview": "I reserved it the 15th of September, it only says that i should wait until 2027 with no specific month, i saw a lot of people with the same estimated time that received the email now, but they reserve…",
+    "url": "https://steamcommunity.com/app/4165870/discussions/0/573805022987423849/",
+    "last_post": "2026-10-27T09:52:02+00:00",
+    "replies": 0,
+    "eu": [],
+    "first_seen": "2026-10-27T10:35:11+00:00"
+   },
+   {
     "id": "573804739774643003",
     "title": "Order refunded with no explanation - can't re-order",
     "preview": "This morning I got an email saying \"Your order could not be shipped\" and then another saying \"Steam purchase refunded\". It won't let me contact support from my purchases page (there's no appropriate o…",
     "url": "https://steamcommunity.com/app/4165870/discussions/0/573804739774643003/",
-    "last_post": "2026-10-26T20:24:22+00:00",
-    "replies": 7,
+    "last_post": "2026-10-27T08:14:27+00:00",
+    "replies": 8,
     "eu": [
      "£"
     ],
@@ -253,6 +263,20 @@
    }
   ],
   "reports": [
+   {
+    "id": "573805022987423849-op",
+    "date": "2026-10-27T09:52:02+00:00",
+    "status": "got",
+    "text": "…specific month, i saw a lot of people with the same estimated time that received the email now, but they reserved it on May. Could any of you that recently got the email tell me when you reserved the controller? Just to…",
+    "reserved": "2026-09-15",
+    "reserved_approx": false,
+    "reserved_phrase": "15th of September",
+    "estimate": null,
+    "eu": [],
+    "thread": "How long am i supposed to wait?",
+    "url": "https://steamcommunity.com/app/4165870/discussions/0/573805022987423849/",
+    "first_seen": "2026-10-27T10:35:11+00:00"
+   },
    {
     "id": "573804739774643003-op",
     "date": "2026-10-26T09:41:34+00:00",
