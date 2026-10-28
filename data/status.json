@@ -1,21 +1,21 @@
 {
- "generated_at": "2026-10-27T21:19:03+00:00",
+ "generated_at": "2026-10-28T08:30:33+00:00",
  "sources": {
   "official": {
    "ok": true,
-   "updated_at": "2026-10-27T21:19:03+00:00"
+   "updated_at": "2026-10-28T08:30:33+00:00"
   },
   "store": {
    "ok": true,
-   "updated_at": "2026-10-27T21:19:03+00:00"
+   "updated_at": "2026-10-28T08:30:33+00:00"
   },
   "forum": {
    "ok": true,
-   "updated_at": "2026-10-27T21:19:03+00:00"
+   "updated_at": "2026-10-28T08:30:33+00:00"
   },
   "reddit": {
    "ok": true,
-   "updated_at": "2026-10-27T21:19:03+00:00"
+   "updated_at": "2026-10-28T08:30:33+00:00"
   }
  },
  "official": [
@@ -150,8 +150,8 @@
     "title": "How long am i supposed to wait?",
     "preview": "I reserved it the 15th of September, it only says that i should wait until 2027 with no specific month, i saw a lot of people with the same estimated time that received the email now, but they reserve…",
     "url": "https://steamcommunity.com/app/4165870/discussions/0/573805022987423849/",
-    "last_post": "2026-10-27T10:50:47+00:00",
-    "replies": 1,
+    "last_post": "2026-10-28T05:18:04+00:00",
+    "replies": 2,
     "eu": [],
     "first_seen": "2026-10-27T10:35:11+00:00"
    },
