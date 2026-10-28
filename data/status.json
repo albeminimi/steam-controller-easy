@@ -1,21 +1,21 @@
 {
- "generated_at": "2026-10-28T16:01:34+00:00",
+ "generated_at": "2026-10-28T21:03:36+00:00",
  "sources": {
   "official": {
    "ok": true,
-   "updated_at": "2026-10-28T16:01:34+00:00"
+   "updated_at": "2026-10-28T21:03:36+00:00"
   },
   "store": {
    "ok": true,
-   "updated_at": "2026-10-28T16:01:34+00:00"
+   "updated_at": "2026-10-28T21:03:36+00:00"
   },
   "forum": {
    "ok": true,
-   "updated_at": "2026-10-28T16:01:34+00:00"
+   "updated_at": "2026-10-28T21:03:36+00:00"
   },
   "reddit": {
    "ok": true,
-   "updated_at": "2026-10-28T16:01:34+00:00"
+   "updated_at": "2026-10-28T21:03:36+00:00"
   }
  },
  "official": [
@@ -739,6 +739,21 @@
     "thread": "r/Steam",
     "url": "https://www.reddit.com/r/Steam/comments/1x1sux9/steam_frame_updates_reservation_timing_software/pewnswk/",
     "first_seen": "2026-10-27T21:21:54+00:00"
+   },
+   {
+    "id": "reddit-t1_pewga4d",
+    "source": "reddit",
+    "date": "2026-10-09T18:35:37+00:00",
+    "status": "got",
+    "text": "Me? Nah. I put my reservation in on may 8th and got my purchase on June 3rd. I think the controller queue is up to those who did may 12th now. The gf put hers in on June 8th I think..... She borrows mine often.",
+    "reserved": "2026-05-08",
+    "reserved_approx": false,
+    "reserved_phrase": "may 8th",
+    "estimate": null,
+    "eu": [],
+    "thread": "r/SteamFrame",
+    "url": "https://www.reddit.com/r/SteamFrame/comments/1x1sj1n/reservation_page_change_is_real_probably_still/pewga4d/",
+    "first_seen": "2026-10-28T21:06:33+00:00"
    },
    {
     "id": "reddit-t1_pewfohy",
