@@ -1,21 +1,21 @@
 {
- "generated_at": "2026-10-29T20:17:23+00:00",
+ "generated_at": "2026-10-30T00:58:51+00:00",
  "sources": {
   "official": {
    "ok": true,
-   "updated_at": "2026-10-29T20:17:23+00:00"
+   "updated_at": "2026-10-30T00:58:51+00:00"
   },
   "store": {
    "ok": true,
-   "updated_at": "2026-10-29T20:17:23+00:00"
+   "updated_at": "2026-10-30T00:58:51+00:00"
   },
   "forum": {
    "ok": true,
-   "updated_at": "2026-10-29T20:17:23+00:00"
+   "updated_at": "2026-10-30T00:58:51+00:00"
   },
   "reddit": {
    "ok": true,
-   "updated_at": "2026-10-29T20:17:23+00:00"
+   "updated_at": "2026-10-30T00:58:51+00:00"
   }
  },
  "official": [
@@ -150,9 +150,11 @@
     "title": "How long am i supposed to wait?",
     "preview": "I reserved it the 15th of September, it only says that i should wait until 2027 with no specific month, i saw a lot of people with the same estimated time that received the email now, but they reserve…",
     "url": "https://steamcommunity.com/app/4165870/discussions/0/573805022987423849/",
-    "last_post": "2026-10-28T05:18:04+00:00",
-    "replies": 2,
-    "eu": [],
+    "last_post": "2026-10-29T21:35:11+00:00",
+    "replies": 3,
+    "eu": [
+     "EU"
+    ],
     "first_seen": "2026-10-27T10:35:11+00:00"
    },
    {
@@ -249,6 +251,22 @@
    }
   ],
   "reports": [
+   {
+    "id": "573805022987423849-574930972896881202",
+    "date": "2026-10-29T21:35:11+00:00",
+    "status": "got",
+    "text": "…ry on your Steam profile) - I signed up 12/5, 8 days after release - and got the email to purchase on 22/10. Only based on this info, you will at least wait until January - but it's pretty impossible to even guesstimate…",
+    "reserved": null,
+    "reserved_approx": false,
+    "reserved_phrase": null,
+    "estimate": null,
+    "eu": [
+     "EU"
+    ],
+    "thread": "How long am i supposed to wait?",
+    "url": "https://steamcommunity.com/app/4165870/discussions/0/573805022987423849/#c574930972896881202",
+    "first_seen": "2026-10-30T01:00:25+00:00"
+   },
    {
     "id": "573805022987423849-op",
     "date": "2026-10-27T09:52:02+00:00",
