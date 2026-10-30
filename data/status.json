@@ -1,21 +1,21 @@
 {
- "generated_at": "2026-10-30T19:21:52+00:00",
+ "generated_at": "2026-10-30T23:45:42+00:00",
  "sources": {
   "official": {
    "ok": true,
-   "updated_at": "2026-10-30T19:21:52+00:00"
+   "updated_at": "2026-10-30T23:45:42+00:00"
   },
   "store": {
    "ok": true,
-   "updated_at": "2026-10-30T19:21:52+00:00"
+   "updated_at": "2026-10-30T23:45:42+00:00"
   },
   "forum": {
    "ok": true,
-   "updated_at": "2026-10-30T19:21:52+00:00"
+   "updated_at": "2026-10-30T23:45:42+00:00"
   },
   "reddit": {
    "ok": true,
-   "updated_at": "2026-10-30T19:21:52+00:00"
+   "updated_at": "2026-10-30T23:45:42+00:00"
   }
  },
  "official": [
@@ -146,12 +146,22 @@
  "forum": {
   "threads": [
    {
+    "id": "574930972897015007",
+    "title": "the Best controller ever",
+    "preview": "paid through the Steam invitation email and received mine in 4 days, controller is awesome, great quality and attention to detailed. its better than switch 2 pro controller and Xbox. I I have 2 pro co…",
+    "url": "https://steamcommunity.com/app/4165870/discussions/0/574930972897015007/",
+    "last_post": "2026-10-30T23:05:52+00:00",
+    "replies": 0,
+    "eu": [],
+    "first_seen": "2026-10-30T23:47:18+00:00"
+   },
+   {
     "id": "574930972896950970",
     "title": "I missed the email for the purchase of the controller.",
     "preview": "Is there a way to buy it without going back on the waiting list ?",
     "url": "https://steamcommunity.com/app/4165870/discussions/0/574930972896950970/",
-    "last_post": "2026-10-30T16:32:29+00:00",
-    "replies": 1,
+    "last_post": "2026-10-30T21:03:16+00:00",
+    "replies": 2,
     "eu": [],
     "first_seen": "2026-10-30T14:09:10+00:00"
    },
@@ -261,6 +271,34 @@
    }
   ],
   "reports": [
+   {
+    "id": "574930972897015007-op",
+    "date": "2026-10-30T23:05:52+00:00",
+    "status": "got",
+    "text": "paid through the Steam invitation email and received mine in 4 days, controller is awesome, great quality and attention to detailed. its better than switch 2 pro controller and Xbox. I I have 2 pro controller and 4 xbox…",
+    "reserved": null,
+    "reserved_approx": false,
+    "reserved_phrase": null,
+    "estimate": null,
+    "eu": [],
+    "thread": "the Best controller ever",
+    "url": "https://steamcommunity.com/app/4165870/discussions/0/574930972897015007/",
+    "first_seen": "2026-10-30T23:47:18+00:00"
+   },
+   {
+    "id": "574930972896950970-574930972897002815",
+    "date": "2026-10-30T21:03:16+00:00",
+    "status": "got",
+    "text": "Send support a message, I explained to them I missed the email and they said I was going to be bumped to priority and the next day I was able to buy it, can’t say is guaranteed but worth a try",
+    "reserved": null,
+    "reserved_approx": false,
+    "reserved_phrase": null,
+    "estimate": null,
+    "eu": [],
+    "thread": "I missed the email for the purchase of the controller.",
+    "url": "https://steamcommunity.com/app/4165870/discussions/0/574930972896950970/#c574930972897002815",
+    "first_seen": "2026-10-30T23:47:18+00:00"
+   },
    {
     "id": "573805022987423849-574930972896881202",
     "date": "2026-10-29T21:35:11+00:00",
