@@ -1,21 +1,21 @@
 {
- "generated_at": "2026-10-30T14:07:31+00:00",
+ "generated_at": "2026-10-30T19:21:52+00:00",
  "sources": {
   "official": {
    "ok": true,
-   "updated_at": "2026-10-30T14:07:31+00:00"
+   "updated_at": "2026-10-30T19:21:52+00:00"
   },
   "store": {
    "ok": true,
-   "updated_at": "2026-10-30T14:07:31+00:00"
+   "updated_at": "2026-10-30T19:21:52+00:00"
   },
   "forum": {
    "ok": true,
-   "updated_at": "2026-10-30T14:07:31+00:00"
+   "updated_at": "2026-10-30T19:21:52+00:00"
   },
   "reddit": {
    "ok": true,
-   "updated_at": "2026-10-30T14:07:31+00:00"
+   "updated_at": "2026-10-30T19:21:52+00:00"
   }
  },
  "official": [
@@ -150,8 +150,8 @@
     "title": "I missed the email for the purchase of the controller.",
     "preview": "Is there a way to buy it without going back on the waiting list ?",
     "url": "https://steamcommunity.com/app/4165870/discussions/0/574930972896950970/",
-    "last_post": "2026-10-30T12:08:21+00:00",
-    "replies": 0,
+    "last_post": "2026-10-30T16:32:29+00:00",
+    "replies": 1,
     "eu": [],
     "first_seen": "2026-10-30T14:09:10+00:00"
    },
