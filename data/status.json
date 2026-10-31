@@ -1,22 +1,21 @@
 {
- "generated_at": "2026-10-31T17:43:10+00:00",
+ "generated_at": "2026-10-31T21:33:12+00:00",
  "sources": {
   "official": {
    "ok": true,
-   "updated_at": "2026-10-31T17:43:10+00:00"
+   "updated_at": "2026-10-31T21:33:12+00:00"
   },
   "store": {
    "ok": true,
-   "updated_at": "2026-10-31T17:43:10+00:00"
+   "updated_at": "2026-10-31T21:33:12+00:00"
   },
   "forum": {
    "ok": true,
-   "updated_at": "2026-10-31T17:43:10+00:00"
+   "updated_at": "2026-10-31T21:33:12+00:00"
   },
   "reddit": {
-   "ok": false,
-   "error": "PullPush non raggiungibile: HTTP Error 429: Too Many Requests",
-   "updated_at": "2026-10-31T05:39:26+00:00"
+   "ok": true,
+   "updated_at": "2026-10-31T21:33:12+00:00"
   }
  },
  "official": [
@@ -1226,7 +1225,6 @@
  },
  "events": [],
  "errors": [
-  "reddit diretto: HTTP Error 403: Blocked (uso PullPush)",
-  "reddit: PullPush non raggiungibile: HTTP Error 429: Too Many Requests"
+  "reddit diretto: HTTP Error 403: Blocked (uso PullPush)"
  ]
 }
