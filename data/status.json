@@ -1,20 +1,21 @@
 {
- "generated_at": "2026-10-31T05:39:26+00:00",
+ "generated_at": "2026-10-31T17:43:10+00:00",
  "sources": {
   "official": {
    "ok": true,
-   "updated_at": "2026-10-31T05:39:26+00:00"
+   "updated_at": "2026-10-31T17:43:10+00:00"
   },
   "store": {
    "ok": true,
-   "updated_at": "2026-10-31T05:39:26+00:00"
+   "updated_at": "2026-10-31T17:43:10+00:00"
   },
   "forum": {
    "ok": true,
-   "updated_at": "2026-10-31T05:39:26+00:00"
+   "updated_at": "2026-10-31T17:43:10+00:00"
   },
   "reddit": {
-   "ok": true,
+   "ok": false,
+   "error": "PullPush non raggiungibile: HTTP Error 429: Too Many Requests",
    "updated_at": "2026-10-31T05:39:26+00:00"
   }
  },
@@ -255,16 +256,6 @@
     "preview": "Got the email for controller said three days to purchase but I am stuck in a loop. clicking link just goes to steam start page. It has been ongoing for a couple of days... It is now past the three day…",
     "url": "https://steamcommunity.com/app/4165870/discussions/0/586185220309700078/",
     "last_post": "2026-09-08T19:48:46+00:00",
-    "replies": 2,
-    "eu": [],
-    "first_seen": "2026-10-22T07:11:27+00:00"
-   },
-   {
-    "id": "586184898467897752",
-    "title": "Steam Controller purchase invitation failed and I can’t contact Support",
-    "preview": "I received my Steam Controller purchase invitation on August 31 and tried to complete the purchase right away. The payment failed and Steam did not take any money. Steam still shows the failed $106.30…",
-    "url": "https://steamcommunity.com/app/4165870/discussions/0/586184898467897752/",
-    "last_post": "2026-09-02T09:40:17+00:00",
     "replies": 2,
     "eu": [],
     "first_seen": "2026-10-22T07:11:27+00:00"
@@ -1235,6 +1226,7 @@
  },
  "events": [],
  "errors": [
-  "reddit diretto: HTTP Error 403: Blocked (uso PullPush)"
+  "reddit diretto: HTTP Error 403: Blocked (uso PullPush)",
+  "reddit: PullPush non raggiungibile: HTTP Error 429: Too Many Requests"
  ]
 }
