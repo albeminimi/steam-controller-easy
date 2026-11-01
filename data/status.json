@@ -1,17 +1,17 @@
 {
- "generated_at": "2026-11-01T01:08:48+00:00",
+ "generated_at": "2026-11-01T15:06:34+00:00",
  "sources": {
   "official": {
    "ok": true,
-   "updated_at": "2026-11-01T01:08:48+00:00"
+   "updated_at": "2026-11-01T15:06:34+00:00"
   },
   "store": {
    "ok": true,
-   "updated_at": "2026-11-01T01:08:48+00:00"
+   "updated_at": "2026-11-01T15:06:34+00:00"
   },
   "forum": {
    "ok": true,
-   "updated_at": "2026-11-01T01:08:48+00:00"
+   "updated_at": "2026-11-01T15:06:34+00:00"
   },
   "reddit": {
    "ok": false,
@@ -445,34 +445,6 @@
     "thread": "Email for controller",
     "url": "https://steamcommunity.com/app/4165870/discussions/0/586185220309700078/",
     "first_seen": "2026-10-22T07:16:36+00:00"
-   },
-   {
-    "id": "586184898467897752-586184898467901407",
-    "date": "2026-09-02T09:21:36+00:00",
-    "status": "got",
-    "text": "I have a similar situation. I finally got the invitation to purchase steam machine with controller and I made the purchase via PayPal. It went through in the morning so in steam, the order shows as 'Processed payment' ho…",
-    "reserved": null,
-    "reserved_approx": false,
-    "reserved_phrase": null,
-    "estimate": null,
-    "eu": [],
-    "thread": "Steam Controller purchase invitation failed and I can’t contact Support",
-    "url": "https://steamcommunity.com/app/4165870/discussions/0/586184898467897752/#c586184898467901407",
-    "first_seen": "2026-10-22T07:11:27+00:00"
-   },
-   {
-    "id": "586184898467897752-op",
-    "date": "2026-09-02T08:09:56+00:00",
-    "status": "got",
-    "text": "I received my Steam Controller purchase invitation on August 31 and tried to complete the purchase right away. The payment failed and Steam did not take any money. Steam still shows the failed $106.30 Steam Controller tr…",
-    "reserved": null,
-    "reserved_approx": false,
-    "reserved_phrase": null,
-    "estimate": "2027",
-    "eu": [],
-    "thread": "Steam Controller purchase invitation failed and I can’t contact Support",
-    "url": "https://steamcommunity.com/app/4165870/discussions/0/586184898467897752/",
-    "first_seen": "2026-10-22T14:56:55+00:00"
    }
   ],
   "pages_read": 8
