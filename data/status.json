@@ -1,17 +1,17 @@
 {
- "generated_at": "2026-11-01T15:06:34+00:00",
+ "generated_at": "2026-11-02T15:49:41+00:00",
  "sources": {
   "official": {
    "ok": true,
-   "updated_at": "2026-11-01T15:06:34+00:00"
+   "updated_at": "2026-11-02T15:49:41+00:00"
   },
   "store": {
    "ok": true,
-   "updated_at": "2026-11-01T15:06:34+00:00"
+   "updated_at": "2026-11-02T15:49:41+00:00"
   },
   "forum": {
    "ok": true,
-   "updated_at": "2026-11-01T15:06:34+00:00"
+   "updated_at": "2026-11-02T15:49:41+00:00"
   },
   "reddit": {
    "ok": false,
@@ -146,6 +146,16 @@
  },
  "forum": {
   "threads": [
+   {
+    "id": "574931289648624180",
+    "title": "Kingdome come deliverance gyro",
+    "preview": "Any one got gyro working for kingdome come deliverance?",
+    "url": "https://steamcommunity.com/app/4165870/discussions/0/574931289648624180/",
+    "last_post": "2026-11-02T12:47:37+00:00",
+    "replies": 0,
+    "eu": [],
+    "first_seen": "2026-11-02T15:51:19+00:00"
+   },
    {
     "id": "574930972897015007",
     "title": "the Best controller ever",
