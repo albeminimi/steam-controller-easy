@@ -1,17 +1,17 @@
 {
- "generated_at": "2026-11-04T01:19:55+00:00",
+ "generated_at": "2026-11-04T17:14:08+00:00",
  "sources": {
   "official": {
    "ok": true,
-   "updated_at": "2026-11-04T01:19:55+00:00"
+   "updated_at": "2026-11-04T17:14:08+00:00"
   },
   "store": {
    "ok": true,
-   "updated_at": "2026-11-04T01:19:55+00:00"
+   "updated_at": "2026-11-04T17:14:08+00:00"
   },
   "forum": {
    "ok": true,
-   "updated_at": "2026-11-04T01:19:55+00:00"
+   "updated_at": "2026-11-04T17:14:08+00:00"
   },
   "reddit": {
    "ok": false,
@@ -247,26 +247,6 @@
     "url": "https://steamcommunity.com/app/4165870/discussions/0/617711086156677850/",
     "last_post": "2026-09-13T04:10:38+00:00",
     "replies": 1,
-    "eu": [],
-    "first_seen": "2026-10-22T07:11:27+00:00"
-   },
-   {
-    "id": "569291508114602107",
-    "title": "Missed out because I didn't read my emails",
-    "preview": "I know that I'll get a lot of flak in this but honestly, I needed to vent and argue what Valve has done is not ideal and should have been handled better. I do need to preface that I had reserved the S…",
-    "url": "https://steamcommunity.com/app/4165870/discussions/0/569291508114602107/",
-    "last_post": "2026-09-09T11:20:05+00:00",
-    "replies": 9,
-    "eu": [],
-    "first_seen": "2026-10-22T07:11:27+00:00"
-   },
-   {
-    "id": "586185220309700078",
-    "title": "Email for controller",
-    "preview": "Got the email for controller said three days to purchase but I am stuck in a loop. clicking link just goes to steam start page. It has been ongoing for a couple of days... It is now past the three day…",
-    "url": "https://steamcommunity.com/app/4165870/discussions/0/586185220309700078/",
-    "last_post": "2026-09-08T19:48:46+00:00",
-    "replies": 2,
     "eu": [],
     "first_seen": "2026-10-22T07:11:27+00:00"
    }
