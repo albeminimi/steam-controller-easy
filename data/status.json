@@ -1,21 +1,21 @@
 {
- "generated_at": "2026-11-03T20:58:32+00:00",
+ "generated_at": "2026-11-04T01:19:55+00:00",
  "sources": {
   "official": {
    "ok": true,
-   "updated_at": "2026-11-03T20:58:32+00:00"
+   "updated_at": "2026-11-04T01:19:55+00:00"
   },
   "store": {
    "ok": true,
-   "updated_at": "2026-11-03T20:58:32+00:00"
+   "updated_at": "2026-11-04T01:19:55+00:00"
   },
   "forum": {
    "ok": true,
-   "updated_at": "2026-11-03T20:58:32+00:00"
+   "updated_at": "2026-11-04T01:19:55+00:00"
   },
   "reddit": {
    "ok": false,
-   "error": "PullPush non raggiungibile: HTTP Error 403: Forbidden",
+   "error": "PullPush non raggiungibile: HTTP Error 521: <none>",
    "updated_at": "2026-10-31T21:33:12+00:00"
   }
  },
@@ -1209,6 +1209,6 @@
  "events": [],
  "errors": [
   "reddit diretto: HTTP Error 403: Blocked (uso PullPush)",
-  "reddit: PullPush non raggiungibile: HTTP Error 403: Forbidden"
+  "reddit: PullPush non raggiungibile: HTTP Error 521: <none>"
  ]
 }
