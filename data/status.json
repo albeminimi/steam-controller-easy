@@ -1,17 +1,17 @@
 {
- "generated_at": "2026-11-06T17:29:07+00:00",
+ "generated_at": "2026-11-07T20:52:07+00:00",
  "sources": {
   "official": {
    "ok": true,
-   "updated_at": "2026-11-06T17:29:07+00:00"
+   "updated_at": "2026-11-07T20:52:07+00:00"
   },
   "store": {
    "ok": true,
-   "updated_at": "2026-11-06T17:29:07+00:00"
+   "updated_at": "2026-11-07T20:52:07+00:00"
   },
   "forum": {
    "ok": true,
-   "updated_at": "2026-11-06T17:29:07+00:00"
+   "updated_at": "2026-11-07T20:52:07+00:00"
   },
   "reddit": {
    "ok": false,
@@ -147,6 +147,16 @@
  "forum": {
   "threads": [
    {
+    "id": "571540300205448946",
+    "title": "Hardware wishlist or reservation notifications",
+    "preview": "The mobile Steam app and the PC Steam client do not currently notify the users when their wishlisted hardware becomes available. It also does not generate any notifications when the hardware reservati…",
+    "url": "https://steamcommunity.com/app/4165870/discussions/0/571540300205448946/",
+    "last_post": "2026-11-07T19:34:04+00:00",
+    "replies": 10,
+    "eu": [],
+    "first_seen": "2026-10-22T07:11:27+00:00"
+   },
+   {
     "id": "573805022987423849",
     "title": "How long am i supposed to wait?",
     "preview": "I reserved it the 15th of September, it only says that i should wait until 2027 with no specific month, i saw a lot of people with the same estimated time that received the email now, but they reserve…",
@@ -206,16 +216,6 @@
     "preview": "I ordered yesterday and said 3-5 business days, will it come Monday to Wednesday or earlier?",
     "url": "https://steamcommunity.com/app/4165870/discussions/0/583935635494245397/",
     "last_post": "2026-10-17T21:29:22+00:00",
-    "replies": 9,
-    "eu": [],
-    "first_seen": "2026-10-22T07:11:27+00:00"
-   },
-   {
-    "id": "571540300205448946",
-    "title": "Hardware wishlist or reservation notifications",
-    "preview": "The mobile Steam app and the PC Steam client do not currently notify the users when their wishlisted hardware becomes available. It also does not generate any notifications when the hardware reservati…",
-    "url": "https://steamcommunity.com/app/4165870/discussions/0/571540300205448946/",
-    "last_post": "2026-09-22T15:24:40+00:00",
     "replies": 9,
     "eu": [],
     "first_seen": "2026-10-22T07:11:27+00:00"
@@ -437,20 +437,6 @@
     "thread": "Available when?",
     "url": "https://steamcommunity.com/app/4165870/discussions/0/571548834124044893/",
     "first_seen": "2026-10-22T09:20:18+00:00"
-   },
-   {
-    "id": "586185220309700078-op",
-    "date": "2026-09-08T19:38:39+00:00",
-    "status": "got",
-    "text": "Got the email for controller said three days to purchase but I am stuck in a loop. clicking link just goes to steam start page. It has been ongoing for a couple of days... It is now past the three days and I don't want t…",
-    "reserved": null,
-    "reserved_approx": false,
-    "reserved_phrase": null,
-    "estimate": null,
-    "eu": [],
-    "thread": "Email for controller",
-    "url": "https://steamcommunity.com/app/4165870/discussions/0/586185220309700078/",
-    "first_seen": "2026-10-22T07:16:36+00:00"
    }
   ],
   "pages_read": 8
