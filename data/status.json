@@ -1,17 +1,17 @@
 {
- "generated_at": "2026-11-08T07:18:50+00:00",
+ "generated_at": "2026-11-08T15:11:20+00:00",
  "sources": {
   "official": {
    "ok": true,
-   "updated_at": "2026-11-08T07:18:50+00:00"
+   "updated_at": "2026-11-08T15:11:20+00:00"
   },
   "store": {
    "ok": true,
-   "updated_at": "2026-11-08T07:18:50+00:00"
+   "updated_at": "2026-11-08T15:11:20+00:00"
   },
   "forum": {
    "ok": true,
-   "updated_at": "2026-11-08T07:18:50+00:00"
+   "updated_at": "2026-11-08T15:11:20+00:00"
   },
   "reddit": {
    "ok": false,
@@ -409,34 +409,6 @@
     "thread": "Available when?",
     "url": "https://steamcommunity.com/app/4165870/discussions/0/571548834124044893/#c617710833111304646",
     "first_seen": "2026-10-22T07:11:27+00:00"
-   },
-   {
-    "id": "571548834124044893-571548834124058292",
-    "date": "2026-09-09T13:58:19+00:00",
-    "status": "waiting",
-    "text": "It took me roughly 3 months to get my email and I preordered day 1 immediately. My original estimate was 2027. I got it like August 8th.",
-    "reserved": "2026-05-08",
-    "reserved_approx": false,
-    "reserved_phrase": "day 1",
-    "estimate": "2027",
-    "eu": [],
-    "thread": "Available when?",
-    "url": "https://steamcommunity.com/app/4165870/discussions/0/571548834124044893/#c571548834124058292",
-    "first_seen": "2026-10-22T07:11:27+00:00"
-   },
-   {
-    "id": "571548834124044893-op",
-    "date": "2026-09-09T10:39:22+00:00",
-    "status": "waiting",
-    "text": "I have my reservation since July 3rd and nothing. How long does it take to make more controllers?",
-    "reserved": "2026-07-03",
-    "reserved_approx": false,
-    "reserved_phrase": "July 3rd",
-    "estimate": null,
-    "eu": [],
-    "thread": "Available when?",
-    "url": "https://steamcommunity.com/app/4165870/discussions/0/571548834124044893/",
-    "first_seen": "2026-10-22T09:20:18+00:00"
    }
   ],
   "pages_read": 8
