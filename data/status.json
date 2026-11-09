@@ -1,17 +1,17 @@
 {
- "generated_at": "2026-11-08T23:42:16+00:00",
+ "generated_at": "2026-11-09T06:25:47+00:00",
  "sources": {
   "official": {
    "ok": true,
-   "updated_at": "2026-11-08T23:42:16+00:00"
+   "updated_at": "2026-11-09T06:25:47+00:00"
   },
   "store": {
    "ok": true,
-   "updated_at": "2026-11-08T23:42:16+00:00"
+   "updated_at": "2026-11-09T06:25:47+00:00"
   },
   "forum": {
    "ok": true,
-   "updated_at": "2026-11-08T23:42:16+00:00"
+   "updated_at": "2026-11-09T06:25:47+00:00"
   },
   "reddit": {
    "ok": false,
@@ -151,22 +151,10 @@
     "title": "Hardware wishlist or reservation notifications",
     "preview": "The mobile Steam app and the PC Steam client do not currently notify the users when their wishlisted hardware becomes available. It also does not generate any notifications when the hardware reservati…",
     "url": "https://steamcommunity.com/app/4165870/discussions/0/571540300205448946/",
-    "last_post": "2026-11-08T22:14:21+00:00",
-    "replies": 13,
+    "last_post": "2026-11-08T01:48:45+00:00",
+    "replies": 11,
     "eu": [],
     "first_seen": "2026-10-22T07:11:27+00:00"
-   },
-   {
-    "id": "573805022987423849",
-    "title": "How long am i supposed to wait?",
-    "preview": "I reserved it the 15th of September, it only says that i should wait until 2027 with no specific month, i saw a lot of people with the same estimated time that received the email now, but they reserve…",
-    "url": "https://steamcommunity.com/app/4165870/discussions/0/573805022987423849/",
-    "last_post": "2026-11-08T01:09:59+00:00",
-    "replies": 5,
-    "eu": [
-     "EU"
-    ],
-    "first_seen": "2026-10-27T10:35:11+00:00"
    },
    {
     "id": "574931289648624180",
