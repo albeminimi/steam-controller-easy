@@ -1,17 +1,17 @@
 {
- "generated_at": "2026-11-09T06:25:47+00:00",
+ "generated_at": "2026-11-10T01:30:03+00:00",
  "sources": {
   "official": {
    "ok": true,
-   "updated_at": "2026-11-09T06:25:47+00:00"
+   "updated_at": "2026-11-10T01:30:03+00:00"
   },
   "store": {
    "ok": true,
-   "updated_at": "2026-11-09T06:25:47+00:00"
+   "updated_at": "2026-11-10T01:30:03+00:00"
   },
   "forum": {
    "ok": true,
-   "updated_at": "2026-11-09T06:25:47+00:00"
+   "updated_at": "2026-11-10T01:30:03+00:00"
   },
   "reddit": {
    "ok": false,
@@ -151,8 +151,8 @@
     "title": "Hardware wishlist or reservation notifications",
     "preview": "The mobile Steam app and the PC Steam client do not currently notify the users when their wishlisted hardware becomes available. It also does not generate any notifications when the hardware reservati…",
     "url": "https://steamcommunity.com/app/4165870/discussions/0/571540300205448946/",
-    "last_post": "2026-11-08T01:48:45+00:00",
-    "replies": 11,
+    "last_post": "2026-11-10T01:22:20+00:00",
+    "replies": 12,
     "eu": [],
     "first_seen": "2026-10-22T07:11:27+00:00"
    },
