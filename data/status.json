@@ -1,17 +1,17 @@
 {
- "generated_at": "2026-11-10T01:30:03+00:00",
+ "generated_at": "2026-11-10T23:20:14+00:00",
  "sources": {
   "official": {
    "ok": true,
-   "updated_at": "2026-11-10T01:30:03+00:00"
+   "updated_at": "2026-11-10T23:20:14+00:00"
   },
   "store": {
    "ok": true,
-   "updated_at": "2026-11-10T01:30:03+00:00"
+   "updated_at": "2026-11-10T23:20:14+00:00"
   },
   "forum": {
    "ok": true,
-   "updated_at": "2026-11-10T01:30:03+00:00"
+   "updated_at": "2026-11-10T23:20:14+00:00"
   },
   "reddit": {
    "ok": false,
@@ -151,8 +151,8 @@
     "title": "Hardware wishlist or reservation notifications",
     "preview": "The mobile Steam app and the PC Steam client do not currently notify the users when their wishlisted hardware becomes available. It also does not generate any notifications when the hardware reservati…",
     "url": "https://steamcommunity.com/app/4165870/discussions/0/571540300205448946/",
-    "last_post": "2026-11-10T01:22:20+00:00",
-    "replies": 12,
+    "last_post": "2026-11-10T22:46:06+00:00",
+    "replies": 13,
     "eu": [],
     "first_seen": "2026-10-22T07:11:27+00:00"
    },
@@ -383,20 +383,6 @@
     "thread": "Hardware wishlist or reservation notifications",
     "url": "https://steamcommunity.com/app/4165870/discussions/0/571540300205448946/#c570423993959631393",
     "first_seen": "2026-10-22T14:56:55+00:00"
-   },
-   {
-    "id": "571548834124044893-617710833111304646",
-    "date": "2026-09-11T19:54:02+00:00",
-    "status": "got",
-    "text": "I pre-ordered on 16th May and have just paid for it a moment ago when the email came through",
-    "reserved": "2026-05-16",
-    "reserved_approx": false,
-    "reserved_phrase": "16th May",
-    "estimate": null,
-    "eu": [],
-    "thread": "Available when?",
-    "url": "https://steamcommunity.com/app/4165870/discussions/0/571548834124044893/#c617710833111304646",
-    "first_seen": "2026-10-22T07:11:27+00:00"
    }
   ],
   "pages_read": 8
