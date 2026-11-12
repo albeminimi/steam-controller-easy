@@ -1,17 +1,17 @@
 {
- "generated_at": "2026-11-12T11:06:28+00:00",
+ "generated_at": "2026-11-12T18:55:14+00:00",
  "sources": {
   "official": {
    "ok": true,
-   "updated_at": "2026-11-12T11:06:28+00:00"
+   "updated_at": "2026-11-12T18:55:14+00:00"
   },
   "store": {
    "ok": true,
-   "updated_at": "2026-11-12T11:06:28+00:00"
+   "updated_at": "2026-11-12T18:55:14+00:00"
   },
   "forum": {
    "ok": true,
-   "updated_at": "2026-11-12T11:06:28+00:00"
+   "updated_at": "2026-11-12T18:55:14+00:00"
   },
   "reddit": {
    "ok": false,
@@ -225,16 +225,6 @@
     "url": "https://steamcommunity.com/app/4165870/discussions/0/617711086156921054/",
     "last_post": "2026-09-15T15:32:23+00:00",
     "replies": 0,
-    "eu": [],
-    "first_seen": "2026-10-22T07:11:27+00:00"
-   },
-   {
-    "id": "571548834124044893",
-    "title": "Available when?",
-    "preview": "I have my reservation since July 3rd and nothing. How long does it take to make more controllers?",
-    "url": "https://steamcommunity.com/app/4165870/discussions/0/571548834124044893/",
-    "last_post": "2026-09-13T18:54:19+00:00",
-    "replies": 12,
     "eu": [],
     "first_seen": "2026-10-22T07:11:27+00:00"
    }
