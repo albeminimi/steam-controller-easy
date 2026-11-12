@@ -1,17 +1,17 @@
 {
- "generated_at": "2026-11-10T23:20:14+00:00",
+ "generated_at": "2026-11-12T11:06:28+00:00",
  "sources": {
   "official": {
    "ok": true,
-   "updated_at": "2026-11-10T23:20:14+00:00"
+   "updated_at": "2026-11-12T11:06:28+00:00"
   },
   "store": {
    "ok": true,
-   "updated_at": "2026-11-10T23:20:14+00:00"
+   "updated_at": "2026-11-12T11:06:28+00:00"
   },
   "forum": {
    "ok": true,
-   "updated_at": "2026-11-10T23:20:14+00:00"
+   "updated_at": "2026-11-12T11:06:28+00:00"
   },
   "reddit": {
    "ok": false,
@@ -147,6 +147,16 @@
  "forum": {
   "threads": [
    {
+    "id": "565925045474548187",
+    "title": "I am really disappointed in the Steam Controller",
+    "preview": "I bought the Steam Controller back in August when my preorder came up. I am not thrilled with the layout of many things on the controller, smaller face buttons, no click on the bumpers, lack of trigge…",
+    "url": "https://steamcommunity.com/app/4165870/discussions/0/565925045474548187/",
+    "last_post": "2026-11-12T03:25:07+00:00",
+    "replies": 0,
+    "eu": [],
+    "first_seen": "2026-11-12T11:07:55+00:00"
+   },
+   {
     "id": "571540300205448946",
     "title": "Hardware wishlist or reservation notifications",
     "preview": "The mobile Steam app and the PC Steam client do not currently notify the users when their wishlisted hardware becomes available. It also does not generate any notifications when the hardware reservati…",
@@ -225,16 +235,6 @@
     "url": "https://steamcommunity.com/app/4165870/discussions/0/571548834124044893/",
     "last_post": "2026-09-13T18:54:19+00:00",
     "replies": 12,
-    "eu": [],
-    "first_seen": "2026-10-22T07:11:27+00:00"
-   },
-   {
-    "id": "617711086156677850",
-    "title": "XBOX Elite Series 2 Finally Died after 5 years with it. Can't wait for the Steam Controller",
-    "preview": "My elite series 2 controller finally died, I put in my reservation for the Steam Controller since its the only controller that gives me interest. Good 5 years with series 2. But yeah I put my reservat…",
-    "url": "https://steamcommunity.com/app/4165870/discussions/0/617711086156677850/",
-    "last_post": "2026-09-13T04:10:38+00:00",
-    "replies": 1,
     "eu": [],
     "first_seen": "2026-10-22T07:11:27+00:00"
    }
