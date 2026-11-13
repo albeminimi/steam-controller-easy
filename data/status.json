@@ -1,17 +1,17 @@
 {
- "generated_at": "2026-11-13T00:22:30+00:00",
+ "generated_at": "2026-11-13T07:56:35+00:00",
  "sources": {
   "official": {
    "ok": true,
-   "updated_at": "2026-11-13T00:22:30+00:00"
+   "updated_at": "2026-11-13T07:56:35+00:00"
   },
   "store": {
    "ok": true,
-   "updated_at": "2026-11-13T00:22:30+00:00"
+   "updated_at": "2026-11-13T07:56:35+00:00"
   },
   "forum": {
    "ok": true,
-   "updated_at": "2026-11-13T00:22:30+00:00"
+   "updated_at": "2026-11-13T07:56:35+00:00"
   },
   "reddit": {
    "ok": false,
@@ -151,8 +151,8 @@
     "title": "Missed out because I didn't read my emails",
     "preview": "I know that I'll get a lot of flak in this but honestly, I needed to vent and argue what Valve has done is not ideal and should have been handled better. I do need to preface that I had reserved the S…",
     "url": "https://steamcommunity.com/app/4165870/discussions/0/569291508114602107/",
-    "last_post": "2026-11-12T23:57:21+00:00",
-    "replies": 10,
+    "last_post": "2026-11-13T01:38:52+00:00",
+    "replies": 11,
     "eu": [],
     "first_seen": "2026-11-13T00:24:04+00:00"
    },
