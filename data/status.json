@@ -1,17 +1,17 @@
 {
- "generated_at": "2026-11-13T07:56:35+00:00",
+ "generated_at": "2026-11-14T10:28:45+00:00",
  "sources": {
   "official": {
    "ok": true,
-   "updated_at": "2026-11-13T07:56:35+00:00"
+   "updated_at": "2026-11-14T10:28:45+00:00"
   },
   "store": {
    "ok": true,
-   "updated_at": "2026-11-13T07:56:35+00:00"
+   "updated_at": "2026-11-14T10:28:45+00:00"
   },
   "forum": {
    "ok": true,
-   "updated_at": "2026-11-13T07:56:35+00:00"
+   "updated_at": "2026-11-14T10:28:45+00:00"
   },
   "reddit": {
    "ok": false,
@@ -225,16 +225,6 @@
     "url": "https://steamcommunity.com/app/4165870/discussions/0/583935635494245397/",
     "last_post": "2026-10-17T21:29:22+00:00",
     "replies": 9,
-    "eu": [],
-    "first_seen": "2026-10-22T07:11:27+00:00"
-   },
-   {
-    "id": "617711086156921054",
-    "title": "Didn’t get the email to purchase but!",
-    "preview": "Steam support came to the rescue, couldn’t reply to your support message Borris but thank you for your quick reply and the help!",
-    "url": "https://steamcommunity.com/app/4165870/discussions/0/617711086156921054/",
-    "last_post": "2026-09-15T15:32:23+00:00",
-    "replies": 0,
     "eu": [],
     "first_seen": "2026-10-22T07:11:27+00:00"
    }
